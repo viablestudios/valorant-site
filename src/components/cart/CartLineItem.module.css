@@ -1,0 +1,125 @@
+.line {
+  display: grid;
+  grid-template-columns: 84px 1fr auto;
+  gap: 16px;
+  align-items: start;
+  padding-block: 18px;
+  border-bottom: 1px solid var(--line);
+}
+
+.thumb {
+  position: relative;
+  width: 100%;
+  padding: 0;
+  cursor: pointer;
+  display: block;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  border-radius: var(--radius);
+  background: var(--navy);
+  border: 1px solid var(--line);
+}
+.thumb[data-cover] {
+  padding: 8px 12px;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.name {
+  background: none;
+  border: 0;
+  padding: 0;
+  text-align: left;
+  cursor: pointer;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 22px;
+  text-transform: uppercase;
+  line-height: 1;
+}
+.name:hover {
+  color: var(--gold);
+}
+
+.meta {
+  font-size: 15px;
+  color: var(--muted);
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 8px;
+}
+
+.qty {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+}
+.qty button {
+  width: 30px;
+  height: 30px;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  color: var(--bone);
+}
+.qty button:hover {
+  color: var(--red);
+}
+.qty span {
+  min-width: 24px;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 13px;
+}
+
+.digital {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold);
+  border: 1px solid rgba(230, 205, 148, 0.35);
+  padding: 4px 7px;
+  border-radius: 2px;
+}
+
+.remove {
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  font-size: 13px;
+  color: var(--dim);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.remove:hover {
+  color: var(--red);
+}
+
+.price {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 18px;
+  font-variant-numeric: tabular-nums;
+  color: var(--gold);
+}
+
+.compact {
+  grid-template-columns: 64px 1fr auto;
+}
+.compact .name {
+  font-size: 19px;
+}
+
+.name{font-family:var(--font-body);font-size:19px;line-height:1.25;text-transform:none}.meta,.remove{font-size:14px}.price{font-size:18px}

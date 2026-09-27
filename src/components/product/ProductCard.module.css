@@ -1,0 +1,175 @@
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(180deg, var(--panel) 0%, var(--navy) 100%);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  transition: border-color 0.3s, box-shadow 0.3s, transform 0.4s var(--ease);
+  animation: cardIn 0.5s var(--ease) both;
+}
+
+/* Outline glow on hover — the site-wide signature */
+.card:hover,
+.card:focus-within {
+  border-color: rgba(255, 70, 85, 0.75);
+  box-shadow: 0 0 0 1px rgba(255, 70, 85, 0.25), 0 0 26px -4px var(--red-glow), inset 0 0 22px -12px var(--red-glow);
+  transform: translateY(-3px);
+}
+
+.stage {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border-radius: var(--radius) var(--radius) 0 0;
+  background: radial-gradient(90% 70% at 50% 40%, #1a2836 0%, var(--navy) 70%);
+}
+
+.mediaBox {
+  position: absolute;
+  inset: 0;
+  transition: transform 0.6s var(--ease);
+}
+.card:hover .mediaBox {
+  transform: scale(1.04);
+}
+
+/* Guide covers sit on the stage like a product shot */
+.stage[data-cover] .mediaBox {
+  inset: 10% 24% 12%;
+  display: flex;
+  align-items: center;
+}
+.card:hover .stage[data-cover] .mediaBox {
+  transform: translateY(-5px) rotate(-1.5deg);
+}
+.stage[data-cover]::after {
+  content: "";
+  position: absolute;
+  left: 24%;
+  right: 24%;
+  bottom: 7%;
+  height: 10px;
+  background: radial-gradient(closest-side, rgba(0, 0, 0, 0.7), transparent);
+}
+
+.badges {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.badges li {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  padding: 5px 8px;
+  border-radius: 2px;
+  background: rgba(10, 15, 20, 0.88);
+  border: 1px solid var(--line-strong);
+}
+.bestseller {
+  color: var(--red);
+  border-color: rgba(255, 70, 85, 0.5) !important;
+}
+.pro {
+  color: var(--gold);
+  border-color: rgba(230, 205, 148, 0.5) !important;
+}
+.new,
+.limited {
+  color: var(--bone);
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 14px 16px 14px;
+  flex: 1;
+}
+
+.cat {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.name {
+  font-family: var(--font-display);
+  font-size: 23px;
+  font-weight: 800;
+  text-transform: uppercase;
+  line-height: 0.95;
+}
+
+.open {
+  all: unset;
+  cursor: pointer;
+}
+.open::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+.open:focus-visible {
+  outline: none;
+}
+.card:has(.open:focus-visible) {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+
+.foot {
+  margin-top: auto;
+  padding-top: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes cardIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+
+@media(max-width:700px){.foot{flex-wrap:wrap}.foot>button{width:100%;min-height:44px}.body{padding:12px}.cat{font-size:9px}.card{min-width:0}}
+
+.card{min-width:0}.stage{aspect-ratio:4/3}.body{padding:24px;gap:12px}.name{font:700 28px/1.15 var(--font-display);text-transform:none}.cat{font:600 14px var(--font-body);letter-spacing:.06em}.tagline{font-size:17px;line-height:1.55;color:var(--muted);margin:0 0 8px}.foot{gap:18px;flex-wrap:wrap;padding-top:18px}.foot>button{font-size:15px;min-height:48px}.stage[data-cover] .mediaBox{inset:9% 24%}.badges{display:none}@media(max-width:600px){.foot>button{width:auto}.body{padding:24px}.name{font-size:30px}.stage{aspect-ratio:4/3}}
+/* Best seller: solid tag + gold outline so the bundle leads the grid */
+.badges li.bestseller {
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  padding: 6px 10px;
+  color: #fff;
+  background: var(--red);
+  border-color: var(--red) !important;
+}
+.featured {
+  border-color: rgba(230, 205, 148, 0.55);
+  box-shadow: 0 0 0 1px rgba(230, 205, 148, 0.25), 0 0 34px -12px var(--gold-glow);
+}
+/* Other badges stay hidden (rule above); only the best seller shows its tag */
+.featured .badges {
+  display: block;
+  z-index: 2;
+  top: 0;
+  left: 0;
+}
+.featured .badges li.bestseller {
+  font-size: 12px;
+  padding: 7px 10px;
+  border-radius: 0;
+}

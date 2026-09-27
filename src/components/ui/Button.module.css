@@ -1,0 +1,114 @@
+.btn {
+  --notch: 12px;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  border: 0;
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 13px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease), background 0.25s, color 0.25s, filter 0.25s;
+  clip-path: polygon(0 0, calc(100% - var(--notch)) 0, 100% var(--notch), 100% 100%, var(--notch) 100%, 0 calc(100% - var(--notch)));
+}
+
+.md {
+  padding: 15px 24px;
+}
+.lg {
+  padding: 19px 30px;
+  font-size: 14px;
+}
+.sm {
+  padding: 10px 16px;
+  font-size: 11px;
+  --notch: 8px;
+}
+.block {
+  width: 100%;
+}
+
+.primary {
+  background: var(--red);
+  color: #102009;
+}
+.primary:hover {
+  filter: drop-shadow(0 0 14px var(--red-glow));
+  background: #d9ffa8;
+}
+
+/* Glowing outline — drop-shadow follows the notched clip-path */
+.outline {
+  background: transparent;
+  color: var(--bone);
+}
+.outline::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--bone);
+  clip-path: inherit;
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  padding: 1px;
+  opacity: 0.5;
+  transition: opacity 0.25s, background 0.25s;
+}
+.outline:hover {
+  color: var(--gold);
+  filter: drop-shadow(0 0 10px var(--gold-glow));
+}
+.outline:hover::before {
+  background: var(--gold);
+  opacity: 1;
+}
+
+.gold {
+  background: linear-gradient(135deg, #f1dcaa, var(--gold) 45%, var(--gold-deep));
+  color: #1a140a;
+  font-weight: 600;
+}
+.gold:hover {
+  filter: drop-shadow(0 0 14px var(--gold-glow));
+}
+
+.ghost {
+  background: transparent;
+  color: var(--muted);
+  clip-path: none;
+  padding-inline: 4px;
+}
+.ghost:hover {
+  color: var(--bone);
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  filter: none;
+}
+
+.label {
+  position: relative;
+}
+
+.arrow {
+  position: relative;
+  transition: transform 0.25s var(--ease);
+}
+.btn:hover .arrow {
+  transform: translateX(4px);
+}
+.primary{background:var(--red);color:#fff}.primary:hover{background:#ff5a67}.gold{background:linear-gradient(120deg,#f4e1b4,#e6cd94 45%,#b99b5f);color:#211b10}
+
+.btn{font-family:var(--font-body);letter-spacing:.025em;text-transform:none;font-size:17px}.sm{font-size:15px;min-height:46px}.lg{font-size:18px}.label{white-space:normal}

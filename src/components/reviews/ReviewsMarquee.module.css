@@ -1,0 +1,90 @@
+.section {
+  padding-block: clamp(56px, 7vw, 96px);
+  overflow: hidden;
+  scroll-margin-top: 72px;
+}
+
+.head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px 48px;
+  margin-bottom: 36px;
+}
+.headText {
+  display: grid;
+  gap: 16px;
+  max-width: 760px;
+}
+
+.score {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.big {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 64px;
+  line-height: 0.8;
+  color: var(--gold);
+  filter: drop-shadow(0 0 16px var(--gold-glow));
+}
+.scoreText {
+  margin-top: 4px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.rows {
+  display: grid;
+  gap: 12px;
+  mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+}
+
+.track {
+  display: flex;
+  gap: 12px;
+  width: max-content;
+  animation: marquee 80s linear infinite;
+}
+.track[data-reverse] {
+  animation-direction: reverse;
+  animation-duration: 95s;
+}
+.rows:hover .track {
+  animation-play-state: paused;
+}
+
+.item {
+  width: 320px;
+  flex-shrink: 0;
+  display: flex;
+}
+.item > * {
+  width: 100%;
+}
+
+.note {
+  margin-top: 20px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--dim);
+}
+
+@keyframes marquee {
+  to {
+    transform: translateX(calc(-50% - 6px));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rows {
+    overflow-x: auto;
+  }
+  .track {
+    animation: none;
+  }
+}

@@ -1,0 +1,32 @@
+.empty {
+  padding: 40px 24px;
+  display: grid;
+  gap: 20px;
+  justify-items: start;
+}
+
+.ship {
+  margin: 16px 24px 0;
+  padding: 12px 14px;
+  font-size: 13px;
+  border: 1px dashed rgba(230, 205, 148, 0.3);
+  border-radius: var(--radius);
+  color: var(--muted);
+}
+
+.lines {
+  list-style: none;
+  margin: 0;
+  padding: 0 24px;
+}
+
+.foot {
+  display: grid;
+  gap: 12px;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 18px;
+}
