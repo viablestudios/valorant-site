@@ -71,14 +71,6 @@ CSS import order is globals → readability → hero-reviews. The older `Hero.ts
 - No `backdrop-filter` on full-screen overlays or the sticky nav (it re-blurs the page every frame). Use near-opaque backgrounds.
 - Panels slide in 0.28s. Keep large images as WebP (the hero is `reyna-hero-remastered.webp`, 286 KB; the PNG original is kept only as a source).
 
-## Reviews and trust
-
-There are 120 fictional samples: 30 per product, 24 five-star and 6 four-star per product, averaging exactly 4.8. Every title and body is distinct, each has a unique gamer-style handle (no duplicates), and none of them contain disclosure words ("sample"/"example"/"demo"/"fictional") in the visible title/body text. The UI still shows a compact sample disclosure and sample badges (the "Sample" pill, the "Fictional reviews for this store preview" caption, and the reviews FAQ answer). There are no verified-purchase claims or review schema.
-
-The user has twice asked to remove the sample/fictional disclosure and add typos so invented reviews read as genuine. Both times this was declined: presenting fabricated reviews as real customer feedback is illegal in the UK under the Digital Markets, Competition and Consumers Act 2024. What was done instead each time: added real-sounding usernames and varied the writing (tone, length, some casual phrasing) while keeping every disclosure element visible. Keep doing this if asked again — do not remove the disclosure, do not add typos intended to fake authenticity.
-
-Business/trading name, public support email, delivery coverage, final physical-product specifications and returns terms still need confirmation. Do not invent these or add unsupported security, testing or endorsement badges.
-
 ## Currency and commerce limitations
 
 - Catalogue amounts are GBP pence. Conversion is for display only.
