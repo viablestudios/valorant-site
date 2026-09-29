@@ -1009,7 +1009,46 @@ export const products: Product[] = [
     faq: [],
     tagline: "A plan for ranked. Finally.",
     shortDescription:
-      "Four practical resources for aim, decision-making, review and a more consistent practice routine.",
+      "Four practical resources for aim, decision-making, review and a more consistent practice routine."
+  },
+  {
+    ...pick("wallpaper-vault"),
+    name: "Wallpapers",
+    category: "wallpapers",
+    price: 1999,
+    compareAtPrice: 3199, // crossed-out "was" price: previous genuine selling price per owner, shows 38% off
+    badges: undefined,
+    bundleOf: undefined,
+    related: [],
+    faq: [],
+    media: [
+      {
+        kind: "image",
+        src: "/images/collection/art-25.jpg",
+        alt: "Astra wallpaper collection preview",
+        position: "50% 0%", // keep the ASTRA title and her face in the square card
+        ratio: "4/3",
+      },
+    ],
+    tagline: "New background.",
+    shortDescription:
+      "The complete artwork collection in one wallpaper pack. Browse every design below before choosing.",
+    longDescription: [
+      "Explore the full collection of character artwork in the gallery. Source dimensions vary; the filename is not a guarantee of 4K resolution.",
+    ],
+    includes: [
+      "All 32 artwork designs",
+      "Desktop and mobile artwork collection",
+      "Personal-use wallpaper pack",
+    ],
+    specs: [
+      { label: "Designs", value: "32" },
+      {
+        label: "Resolution",
+        value: "Varies by artwork; original source dimensions",
+      },
+      { label: "Type", value: "Digital collection" },
+    ],
   },
   {
     ...pick("phone-case-contour"),
@@ -1033,7 +1072,7 @@ export const products: Product[] = [
     related: [],
     faq: [],
     shipsIn: "Delivery details confirmed before launch",
-    tagline: "Protect your phone. Your RR is on you.",
+    tagline: "Protect your phone. Your RR is on you."
   },
   {
     ...pick("reticle-coaster-set"),
@@ -1059,44 +1098,6 @@ export const products: Product[] = [
     related: [],
     faq: [],
     shipsIn: "Delivery details confirmed before launch",
-    tagline: "For the only rings your desk should have.",
-  },
-  {
-    ...pick("wallpaper-vault"),
-    name: "Wallpapers",
-    category: "wallpapers",
-    price: 1099,
-    compareAtPrice: 1799, // crossed-out "was" price
-    badges: undefined,
-    bundleOf: undefined,
-    related: [],
-    faq: [],
-    media: [
-      {
-        kind: "image",
-        src: "/images/collection/art-29.jpg",
-        alt: "Reyna wallpaper collection preview",
-        ratio: "4/3",
-      },
-    ],
-    tagline: "New background. Same questionable crosshair.",
-    shortDescription:
-      "The complete artwork collection in one wallpaper pack. Browse every design below before choosing.",
-    longDescription: [
-      "Explore the full collection of character artwork in the gallery. Source dimensions vary; the filename is not a guarantee of 4K resolution.",
-    ],
-    includes: [
-      "All 32 artwork designs",
-      "Desktop and mobile artwork collection",
-      "Personal-use wallpaper pack",
-    ],
-    specs: [
-      { label: "Designs", value: "32" },
-      {
-        label: "Resolution",
-        value: "Varies by artwork; original source dimensions",
-      },
-      { label: "Type", value: "Digital collection" },
-    ],
+    tagline: "For the only rings your desk should have."
   },
 ];

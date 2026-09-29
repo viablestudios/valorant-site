@@ -23,8 +23,9 @@ Port 3000 may already be occupied by an older session. The latest local preview 
 - Reyna centred in the hero. Headline words surround her and remain readable; slight letter overlap is acceptable. Do not restore the version that hides whole words.
 - No decorative serif or italic display type anywhere. Headings use the upright display face; emphasis is gold colour at the same weight, so the tone stays serious and purposeful.
 - Premium gold accents, restrained gamer humour, large product images and clear prices.
-- Phoenix section must not put decorative text behind its real heading.
-- Exactly four sellable products: Climb Bundle £49.99; Phone cases £24.99; Coasters £14.99; Wallpapers £10.99. Each shows a crossed-out "was" price (£79.99 / £39.99 / £23.99 / £17.99) via `compareAtPrice`; these must be genuine prior prices before launch (UK pricing rules).
+- The old Phoenix/bundle panel (`#about`) is now the "Switching to Valorant?" sensitivity converter in `src/components/home/SensCheck.tsx` (CS2, Apex Legends, Overwatch 2, Call of Duty, Fortnite, Team Fortress 2 to Valorant, plus DPI for eDPI). Game values are at the top of that file.
+- Exactly four sellable products: Climb Bundle £49.99; Wallpapers £19.99; Phone cases £24.99; Coasters £14.99 (shop order). Each shows a crossed-out "was" price (£79.99 / £31.99 / £39.99 / £23.99) via `compareAtPrice`; these must be genuine prior prices before launch (UK pricing rules). The owner confirmed £31.99 as the wallpapers' previous selling price (shows 38% off).
+- Euro prices match the GBP number (£49.99 shows as €49.99) via `PARITY_CURRENCIES` in `src/lib/currency.ts`; other currencies use live conversion.
 - All 32 original images are represented in the artwork gallery.
 
 ## Where to edit
@@ -34,6 +35,11 @@ Port 3000 may already be occupied by an older session. The latest local preview 
 | Page assembly | `src/app/page.tsx` |
 | Main sections, gallery, help | `src/components/home/Storefront.tsx` |
 | Centred hero | `src/components/home/CenteredHero.tsx` |
+| Sens converter (`#about`) | `src/components/home/SensCheck.tsx` |
+| Habit flip cards (`#mindset`) | `src/components/home/HabitFlip.tsx` |
+| Rank finder (`#collection`) | `src/components/home/RankFinder.tsx` |
+| Skill picker ("What you'll actually improve") | `src/components/home/SkillSelect.tsx` |
+| Searchable help (`#help`); questions and topics are in `Storefront.tsx` | `src/components/home/HelpSearch.tsx` |
 | Editorial review showcase and paged library | `src/components/reviews/ReviewShowcase.tsx` |
 | Current hero/review styles | `src/app/hero-reviews.css` |
 | Full-width layout and readable typography | `src/app/readability.css` |

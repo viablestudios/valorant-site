@@ -9,7 +9,7 @@ export function CenteredHero() {
       </p>
       <div className="centered-hero-art">
         <Image
-          src="/images/characters/reyna-hero-remastered.webp"
+          src="/images/characters/reyna-hero-cutout.webp"
           alt="Reyna surrounded by purple soul energy"
           width={941}
           height={1672}
@@ -41,7 +41,6 @@ export function CenteredHero() {
           <a href="#shop" className="gold-button">
             Find your next upgrade <span aria-hidden="true">↗</span>
           </a>
-          <p>Four focused products. Zero filler.</p>
         </div>
       </div>
     </section>

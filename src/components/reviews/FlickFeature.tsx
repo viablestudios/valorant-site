@@ -3,7 +3,9 @@
 import { useState } from "react";
 import { useStoreUI } from "@/components/store/StoreUI";
 
-const VIDEO_ID = "CvlTxVjutuI";
+const VIDEO_ID = "USiD0TLnjrE";
+const START = 11; // seconds into the video
+const TITLE = "Top 50 most viral Valorant clips of all time";
 
 /**
  * Highlight-reel feature at the top of the review section. The YouTube player
@@ -19,48 +21,49 @@ export function FlickFeature() {
       <div className="flick-copy">
         <p className="eyebrow">Watch, then train</p>
         <h2 id="flick-heading">
-          Stop watching better players. <em>Start becoming one.</em>
+          50 plays that shouldn&apos;t have worked. <em>Here&apos;s why they did.</em>
         </h2>
         <p className="flick-lede">
-          10 Minutes of CRAZY Valorant Flicks isn&apos;t just a highlight reel. It&apos;s a look at the speed,
-          confidence and precision you can build when your aim, movement and decision-making start working together.
+          Impossible clutches, instant one taps and reads so good they look scripted. The final shot gets the replay,
+          but the decisions before it won the round.
         </p>
-        <p>
-          If you&apos;re tired of losing gunfights you know you should be winning, this is the level to work towards.
-        </p>
+        <p>Next time you watch, look past the flick:</p>
         <ul className="flick-study" aria-label="What to study in the video">
           <li>
-            <strong>Watch the flicks</strong>
+            <strong>Where their crosshair already was</strong>
           </li>
           <li>
-            <strong>Study the crosshair placement</strong>
+            <strong>When they chose to take the fight</strong>
           </li>
           <li>
-            <strong>Pay attention to the reactions</strong>
+            <strong>How they reset after the kill</strong>
+          </li>
+          <li>
+            <strong>How calm they stay when the round goes wrong</strong>
           </li>
         </ul>
         <p>
-          You don&apos;t need &ldquo;insane natural aim.&rdquo; You need the right practice. Our training helps you
-          sharpen your mechanics, improve your consistency and stop relying on random good games.
+          None of that is natural talent. It&apos;s habit, and habits can be trained, whether you&apos;re Iron or
+          pushing for Immortal.
         </p>
         <div className="flick-ctas">
           <button className="gold-button" onClick={() => openProduct("the-climb-bundle")}>
-            Start improving your aim <span aria-hidden="true">↗</span>
+            Start improving your game <span aria-hidden="true">↗</span>
           </button>
         </div>
-        <p className="flick-tagline">Train smarter. Win more fights. Climb higher.</p>
+        <p className="flick-tagline">Watch the clips. Learn the plays. Then make your own.</p>
       </div>
 
       <div className="flick-frame">
         {playing ? (
           <iframe
-            src={`https://www.youtube-nocookie.com/embed/${VIDEO_ID}?autoplay=1&rel=0&modestbranding=1`}
-            title="10 Minutes of CRAZY Valorant Flicks"
+            src={`https://www.youtube-nocookie.com/embed/${VIDEO_ID}?autoplay=1&start=${START}&rel=0&modestbranding=1`}
+            title={TITLE}
             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen"
             allowFullScreen
           />
         ) : (
-          <button className="flick-poster" onClick={() => setPlaying(true)} aria-label="Play video: 10 Minutes of CRAZY Valorant Flicks">
+          <button className="flick-poster" onClick={() => setPlaying(true)} aria-label={`Play video: ${TITLE}`}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={`https://i.ytimg.com/vi/${VIDEO_ID}/maxresdefault.jpg`} alt="" loading="lazy" />
             <span className="flick-reticle" aria-hidden="true">
@@ -71,8 +74,8 @@ export function FlickFeature() {
               </svg>
             </span>
             <span className="flick-caption">
-              <span>10 Minutes of CRAZY Valorant Flicks</span>
-              <span>YouTube · 10 min</span>
+              <span>{TITLE}</span>
+              <span>YouTube</span>
             </span>
           </button>
         )}
