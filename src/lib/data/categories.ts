@@ -10,7 +10,7 @@ export const categories: Category[] = [
   {
     slug: "training-guides",
     name: "Training Guides",
-    blurb: "Game sense, VOD review and match prep.",
+    blurb: "Aim, game sense and match prep.",
     image: "/images/wallpapers/wp-corridor-thumb.webp",
   },
   {

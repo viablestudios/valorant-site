@@ -24,7 +24,7 @@ const habits: { habit: string; fix: string }[] = [
   },
   {
     habit: "Lose, then straight back into another game hoping it goes better.",
-    fix: "Rewatch one round you lost, write down one thing to fix, then queue.",
+    fix: "Take a five-minute break, pick one thing to focus on next game, then queue.",
   },
 ];
 

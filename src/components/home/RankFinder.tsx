@@ -41,8 +41,8 @@ const ranks: { name: string; stuck: string; focus: string[]; guide: string }[] =
   {
     name: "Diamond",
     stuck: "Mid-round calls: rotating too early, chasing kills and giving up space for nothing.",
-    focus: ["Play for time and information, not just kills.", "Review your deaths from the last three games."],
-    guide: "VOD Review Kit",
+    focus: ["Play for time and information, not just kills.", "Before each round, decide where you're playing and why."],
+    guide: "Game Sense Playbook",
   },
   {
     name: "Ascendant",
@@ -53,8 +53,8 @@ const ranks: { name: string; stuck: string; focus: string[]; guide: string }[] =
   {
     name: "Immortal",
     stuck: "The margins are tiny now. Every small habit shows, good or bad.",
-    focus: ["Review your games against players above you.", "Tighten comms: short, early and useful."],
-    guide: "VOD Review Kit",
+    focus: ["Copy the crosshair placement and timing of players above you.", "Tighten comms: short, early and useful."],
+    guide: "Game Sense Playbook",
   },
 ];
 
