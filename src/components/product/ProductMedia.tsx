@@ -27,7 +27,7 @@ export function ProductMedia({
       fill
       sizes={sizes}
       priority={priority}
-      style={{ objectFit: "cover" }}
+      style={{ objectFit: "cover", objectPosition: media.position }}
     />
   );
 }

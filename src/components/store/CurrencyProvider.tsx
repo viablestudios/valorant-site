@@ -2,6 +2,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import {
   convertedPrice,
+  effectiveRate,
   countryFromLocale,
   currencyForCountry,
 } from "@/lib/currency";
@@ -70,9 +71,12 @@ export function CurrencyProvider({ children }: { children: React.ReactNode }) {
         currency,
         setCurrency,
         rates,
-        note,
+        note:
+          currency === "EUR"
+            ? "Euro prices match the GBP price, e.g. £49.99 is €49.99."
+            : note,
         formatPrice: (p) =>
-          convertedPrice(p, currency, rates[currency] || 1, locale),
+          convertedPrice(p, currency, effectiveRate(currency, rates[currency] || 1), locale),
       }}
     >
       {children}

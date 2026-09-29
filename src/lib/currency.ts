@@ -120,6 +120,11 @@ export function countryFromLocale(locale: string) {
     return "GB";
   }
 }
+/** Currencies priced at the same number as GBP (e.g. £49.99 shows as €49.99), not converted. */
+export const PARITY_CURRENCIES = ["EUR"];
+export function effectiveRate(currency: string, rate: number) {
+  return PARITY_CURRENCIES.includes(currency) ? 1 : rate;
+}
 export function convertedPrice(
   pence: number,
   currency: string,

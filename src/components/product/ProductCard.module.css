@@ -173,3 +173,63 @@
   padding: 7px 10px;
   border-radius: 0;
 }
+
+/* Reviews sit just above the price on every card, so all four cards line up
+   whether or not the digital policy line is shown above them. */
+.reviewBlock {
+  margin: auto 0 4px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+}
+.reviewBlock + .foot {
+  margin-top: 0;
+}
+/* Minimum gap above the review divider when a card's text runs long. */
+.tagline,
+.body :global(.policy-tag) {
+  margin-bottom: 14px;
+}
+.ratingRow {
+  white-space: nowrap;
+  position: relative;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0;
+  background: none;
+  border: 0;
+  color: var(--muted);
+  font-size: 13px;
+  cursor: pointer;
+}
+.ratingRow:hover {
+  color: var(--bone);
+}
+.quote {
+  margin: 10px 0 0;
+}
+.quote blockquote {
+  margin: 0;
+  color: var(--bone);
+  font-size: 14px;
+  line-height: 1.4;
+}
+.quote figcaption {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 6px;
+  color: var(--dim);
+  font-size: 12px;
+}
+.samplePill {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 2px 6px;
+  border: 1px solid var(--line-strong);
+  border-radius: 2px;
+  color: var(--muted);
+}

@@ -1,4 +1,4 @@
-/* Active centre-stage hero. Keep text in the side columns; never cover entire words. */
+/* Active centre-stage hero. Headline sits behind Reyna so she covers the inner edge of some letters; never cover entire words. */
 .centered-hero {
   position: relative;
   isolation: isolate;
@@ -44,11 +44,9 @@
   inset: 20px auto 0 50%;
   width: min(47%, 660px);
   transform: translateX(-50%);
-  z-index: 2;
-  mask-image:
-    linear-gradient(90deg, transparent, #000 17%, #000 83%, transparent),
-    linear-gradient(transparent, #000 16%, #000 82%, transparent);
-  mask-composite: intersect;
+  z-index: 3;
+  /* Transparent cutout: no side fade, so it hides letters with a clean edge. */
+  mask-image: linear-gradient(180deg, #000 82%, transparent);
 }
 .centered-hero-art img {
   width: 100%;
@@ -61,7 +59,7 @@
 }
 .centered-headline {
   position: absolute;
-  z-index: 3;
+  z-index: 2;
   left: 4%;
   right: 4%;
   top: 145px;
@@ -69,7 +67,7 @@
   grid-template-columns: 1fr 1fr;
   column-gap: 32%;
   row-gap: 35px;
-  font: 800 clamp(66px, 7.8vw, 140px)/1 var(--font-display);
+  font: 800 clamp(79px, 9.36vw, 168px)/1 var(--font-display); /* 20% up from 66/7.8vw/140 */
   letter-spacing: -0.045em;
   text-transform: uppercase;
   pointer-events: none;
@@ -323,7 +321,7 @@
   .centered-headline {
     top: 165px;
     column-gap: 30%;
-    font-size: 7.6vw;
+    font-size: 9.12vw;
   }
   .centered-hero-art {
     width: 55%;
@@ -358,10 +356,10 @@
     right: 5%;
     column-gap: 8%;
     row-gap: 12px;
-    font-size: 9.5vw;
+    font-size: 11.4vw;
   }
   .centered-hero-art {
-    top: 178px;
+    top: 200px;
     bottom: 200px;
     width: 100%;
     max-width: 500px;
@@ -634,6 +632,10 @@
   align-items: center;
   gap: 14px 28px;
   margin-top: 8px;
+}
+.flick-copy p strong {
+  color: var(--bone);
+  font-weight: 600;
 }
 .flick-tagline {
   font-size: 14px;
@@ -1422,76 +1424,286 @@
   border-top: 1px solid var(--line);
   padding-top: 14px;
 }
+/* Closing panel: contained, notched like the site's buttons, over the red
+   "rising tracer" wallpaper. Headline left, copy and action right. */
 .mindset-callout {
-  margin-top: 40px;
-  padding-top: 36px;
-  border-top: 1px solid var(--line-strong);
-  text-align: center;
-  display: grid;
-  gap: 16px;
-  justify-items: center;
-}
-.mindset-callout h3 {
-  font: 800 clamp(28px, 3.4vw, 44px)/1.1 var(--font-display);
-  text-transform: uppercase;
-}
-.mindset-callout p {
-  max-width: 640px;
-  color: var(--muted);
-}
-
-/* ---------- What you'll actually improve ---------- */
-.skills-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 20px;
-}
-.skill-card {
   position: relative;
   isolation: isolate;
   overflow: hidden;
-  padding: 26px;
-  border: 1px solid var(--line);
+  max-width: 1120px;
+  margin: 56px auto 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(28px, 5vw, 72px);
+  align-items: center;
+  padding: clamp(36px, 5vw, 64px);
+  border: 1px solid var(--line-strong);
   background: var(--void);
-  border-left: 2px solid var(--red);
+  clip-path: polygon(0 0, calc(100% - 28px) 0, 100% 28px, 100% 100%, 28px 100%, 0 calc(100% - 28px));
 }
-.skill-card > *:not(.skill-card-art) {
-  position: relative;
-  z-index: 1;
-}
-.skill-card-art {
+.mindset-callout-art {
   position: absolute;
-  z-index: 0;
-  inset: 0 0 0 auto;
-  width: 46%;
-  opacity: 0.6;
-  mask-image: linear-gradient(90deg, transparent, #000 55%), linear-gradient(0deg, transparent, #000 30%);
-  mask-composite: intersect;
-  -webkit-mask-image: linear-gradient(90deg, transparent, #000 55%), linear-gradient(0deg, transparent, #000 30%);
-  -webkit-mask-composite: source-in;
+  inset: 0;
+  z-index: -1;
 }
-.skill-card-art img {
+.mindset-callout-art img {
   object-fit: cover;
-  object-position: top;
+  object-position: 60% 50%;
 }
-.skill-card-art img.art-cypher {
-  object-position: center 60%;
-}
-.skill-card::after {
+.mindset-callout-art::after {
   content: "";
   position: absolute;
   inset: 0;
-  z-index: 0;
-  background: linear-gradient(100deg, var(--void) 42%, transparent 78%);
-  pointer-events: none;
+  background: linear-gradient(90deg, rgba(10, 15, 20, 0.2) 0%, rgba(10, 15, 20, 0.55) 55%, rgba(10, 15, 20, 0.82) 100%);
 }
-.skill-card h3 {
-  font: 700 22px/1.2 var(--font-display);
-  margin-bottom: 10px;
+.mindset-callout h3 {
+  font: 800 clamp(40px, 5.2vw, 76px)/0.95 var(--font-display);
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
 }
-.skill-card p {
+.mindset-callout-body {
+  display: grid;
+  gap: 24px;
+  justify-items: start;
+  padding-left: clamp(0px, 3vw, 40px);
+  border-left: 2px solid var(--red);
+}
+.mindset-callout-body p {
+  color: var(--bone);
+  opacity: 0.85;
+  font-size: 17px;
+  line-height: 1.65;
+}
+@media (max-width: 800px) {
+  .mindset-callout {
+    grid-template-columns: 1fr;
+    margin-top: 40px;
+  }
+  .mindset-callout-body {
+    padding-left: 18px;
+  }
+  .mindset-callout-art::after {
+    background: rgba(10, 15, 20, 0.6);
+  }
+}
+
+/* ---------- What you'll actually improve: "pick your weakness" ----------
+   Agent-select lanes. Nothing picked: four equal portraits. Pick one and it locks
+   in (red bar, expands with signs, a drill and the guide); the rest shrink to strips. */
+.skill-select {
+  display: flex;
+  gap: 14px;
+  height: clamp(560px, 46vw, 680px);
+}
+.skill-lane {
+  position: relative;
+  display: flex;
+  flex: 1 1 0;
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--panel);
+  transition: flex-grow 0.5s var(--ease), border-color 0.3s var(--ease);
+}
+.skill-select.has-pick .skill-lane {
+  flex-grow: 0.55;
+}
+.skill-select.has-pick .skill-lane.is-locked {
+  flex-grow: 3.4;
+  border-color: var(--line-strong);
+}
+.skill-lane-pick {
+  all: unset;
+  box-sizing: border-box;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  flex: 1 1 auto;
+  min-width: 0;
+  cursor: pointer;
+}
+.skill-lane.is-locked .skill-lane-pick {
+  flex: 0 0 36%;
+}
+.skill-lane-pick:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: -2px;
+}
+.skill-lane-art {
+  position: absolute;
+  inset: 0;
+}
+.skill-lane-art img {
+  object-fit: cover;
+  transition: transform 0.6s var(--ease), filter 0.4s var(--ease);
+}
+.skill-lane--harbor img,
+.skill-lane--astra img,
+.skill-lane--brimstone img {
+  object-position: 50% 0%;
+}
+.skill-lane--cypher img {
+  object-position: 50% 30%;
+}
+.skill-select.has-pick .skill-lane:not(.is-locked) img {
+  filter: saturate(0.55) brightness(0.7);
+}
+.skill-lane-pick:hover img {
+  transform: scale(1.04);
+  filter: none;
+}
+.skill-lane-art::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, rgba(10, 15, 20, 0.95) 0%, rgba(10, 15, 20, 0.55) 26%, transparent 50%);
+}
+/* Lock-in bar */
+.skill-lane-pick::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 4px;
+  background: var(--red);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.45s var(--ease);
+}
+.skill-lane.is-locked .skill-lane-pick::after,
+.skill-lane-pick:hover::after {
+  transform: scaleX(1);
+}
+.skill-lane-name {
+  position: relative;
+  display: grid;
+  gap: 6px;
+  padding: 20px;
+  color: var(--bone);
+  font: 700 clamp(20px, 1.8vw, 26px)/1.1 var(--font-display);
+}
+.skill-lane-status {
+  justify-self: start;
+  padding: 3px 8px;
+  border: 1px solid var(--line-strong);
+  font: 700 11px/1.2 var(--font-mono);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
   color: var(--muted);
-  font-size: 15px;
+  background: rgba(10, 15, 20, 0.6);
+}
+.skill-lane.is-locked .skill-lane-status {
+  background: var(--red);
+  border-color: var(--red);
+  color: var(--void);
+}
+.skill-select.has-pick .skill-lane:not(.is-locked) .skill-lane-name {
+  font-size: 17px;
+  padding: 16px 12px;
+}
+.skill-lane-detail {
+  flex: 1 1 64%;
+  min-width: 0;
+  display: grid;
+  align-content: start;
+  gap: 12px;
+  padding: clamp(22px, 2.4vw, 32px);
+  overflow-y: auto;
+  animation: verdictIn 0.45s var(--ease) both;
+}
+.skill-lane-detail[hidden] {
+  display: none;
+}
+.skill-lane-summary {
+  color: var(--muted);
+  line-height: 1.6;
+}
+.skill-lane-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.skill-lane-detail ul {
+  list-style: none;
+  margin: -4px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+}
+.skill-lane-detail li {
+  position: relative;
+  padding-left: 22px;
+  color: var(--bone);
+  line-height: 1.45;
+}
+.skill-lane-detail li::before {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: 0.55em;
+  width: 7px;
+  height: 7px;
+  background: var(--red);
+  transform: rotate(45deg);
+}
+.skill-lane-drill {
+  display: grid;
+  gap: 6px;
+  padding: 14px 16px;
+  border-left: 2px solid var(--gold);
+  background: rgba(230, 205, 148, 0.07);
+}
+.skill-lane-drill p:last-child {
+  color: var(--gold);
+  line-height: 1.5;
+}
+.skill-lane-next {
+  display: grid;
+  gap: 10px;
+  justify-items: start;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+}
+.skill-lane-next strong {
+  color: var(--bone);
+}
+@media (prefers-reduced-motion: reduce) {
+  .skill-lane,
+  .skill-lane-art img,
+  .skill-lane-pick::after {
+    transition: none;
+  }
+  .skill-lane-detail {
+    animation: none;
+  }
+}
+/* Below 1200px the side-by-side lanes get too narrow for the detail: stack them,
+   and the picked one opens underneath its banner */
+@media (max-width: 1199px) {
+  .skill-select {
+    flex-direction: column;
+    height: auto;
+  }
+  .skill-lane,
+  .skill-select.has-pick .skill-lane,
+  .skill-select.has-pick .skill-lane.is-locked {
+    flex: none;
+    flex-direction: column;
+  }
+  .skill-lane-pick,
+  .skill-lane.is-locked .skill-lane-pick {
+    flex: none;
+    height: 180px;
+  }
+  .skill-select.has-pick .skill-lane:not(.is-locked) .skill-lane-name {
+    font-size: inherit;
+    padding: 20px;
+  }
 }
 .skills-footer {
   margin-top: 32px;
@@ -1512,12 +1724,570 @@
     transform: rotate(90deg);
     justify-self: center;
   }
-  .skills-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+/* ---------- "Switching to Valorant?" sens converter (#about) ----------
+   Two inputs on the left, one big answer on the right. */
+.sens-check {
+  background: #121c27;
+  border-block: 1px solid var(--line);
+}
+.sens-intro {
+  max-width: 720px;
+  margin-bottom: 36px;
+}
+.sens-intro h2 {
+  font: 700 clamp(34px, 4vw, 60px)/1.05 var(--font-display);
+}
+.sens-intro p {
+  margin-top: 14px;
+  color: var(--muted);
+  font-size: 17px;
+}
+.sens-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  background: var(--void);
+}
+.sens-inputs {
+  display: grid;
+  gap: 22px;
+  align-content: start;
+  padding: clamp(22px, 3vw, 36px);
+  border-right: 1px solid var(--line);
+}
+.sens-field {
+  display: grid;
+  gap: 8px;
+}
+.sens-field > span {
+  color: var(--bone);
+  font-weight: 600;
+}
+.sens-field small {
+  color: var(--muted);
+  font-size: 13px;
+}
+.sens-field input {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  background: var(--navy);
+  color: var(--bone);
+  font: 600 20px/1.2 var(--font-mono);
+}
+.sens-field input:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 1px;
+}
+.sens-field small {
+  color: var(--muted);
+  font-size: 13px;
+}
+.sens-games {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+.sens-game {
+  padding: 10px 12px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  background: transparent;
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.sens-game:hover {
+  color: var(--bone);
+}
+.sens-game.is-active {
+  background: var(--bone);
+  border-color: var(--bone);
+  color: var(--void);
+}
+.sens-game:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+.sens-readout {
+  display: grid;
+  gap: 12px;
+  align-content: center;
+  padding: clamp(22px, 3vw, 40px);
+}
+/* The call-out above the answer: a solid red tag so it reads before the number */
+.sens-result-label {
+  justify-self: start;
+  padding: 7px 14px 7px 12px;
+  background: var(--red);
+  color: var(--void);
+  font: 800 clamp(15px, 1.3vw, 18px)/1.2 var(--font-display);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  clip-path: polygon(0 0, 100% 0, calc(100% - 10px) 100%, 0 100%);
+}
+.sens-result {
+  font: 800 clamp(64px, 8vw, 120px)/0.95 var(--font-display);
+  color: var(--gold);
+  font-variant-numeric: tabular-nums;
+  animation: verdictIn 0.3s var(--ease) both;
+}
+.sens-edpi {
+  color: var(--muted);
+  font-size: 15px;
+}
+.sens-edpi strong {
+  color: var(--bone);
+}
+.sens-result-note {
+  max-width: 520px;
+  color: var(--bone);
+  opacity: 0.85;
+  font-size: 17px;
+}
+.sens-next {
+  display: grid;
+  gap: 12px;
+  justify-items: start;
+  margin-top: 16px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+}
+.sens-next p {
+  color: var(--muted);
+}
+.sens-next strong {
+  color: var(--bone);
+}
+@media (prefers-reduced-motion: reduce) {
+  .sens-result {
+    animation: none;
   }
 }
-@media (max-width: 560px) {
-  .skills-grid {
+@media (max-width: 900px) {
+  .sens-panel {
     grid-template-columns: 1fr;
   }
+  .sens-inputs {
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+}
+
+/* Shared entry animation (rank finder result) */
+@keyframes verdictIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ---------- "Tap a habit to fix it" (Before/After section) ----------
+   Scoreboard-style rows. Fixing one strikes the habit through, opens the fix
+   underneath and wins a round pip (the HUD round tracker) on the left. */
+.habit-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: clamp(32px, 6vw, 96px);
+  align-items: start;
+}
+.habit-side {
+  position: sticky;
+  top: 110px;
+  display: grid;
+  gap: 28px;
+  justify-items: start;
+}
+.habit-intro h2 {
+  font: 800 clamp(38px, 4.4vw, 66px)/1 var(--font-display);
+  text-transform: uppercase;
+}
+.habit-intro h2 .outline-red {
+  display: block;
+}
+.habit-intro p {
+  margin-top: 16px;
+  color: var(--muted);
+  font-size: 18px;
+}
+.habit-pip-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+.habit-pip {
+  width: 22px;
+  height: 22px;
+  border: 1.5px solid var(--line-strong);
+  transform: rotate(45deg);
+  transition: background 0.3s var(--ease), border-color 0.3s var(--ease), transform 0.3s var(--ease);
+}
+.habit-pip.is-won {
+  background: var(--gold);
+  border-color: var(--gold);
+  transform: rotate(45deg) scale(1.08);
+}
+.habit-pips p {
+  color: var(--muted);
+}
+.habit-pips strong {
+  color: var(--gold);
+  font-weight: 700;
+}
+.habit-rows {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--line-strong);
+}
+.habit-rows li {
+  border-bottom: 1px solid var(--line-strong);
+}
+.habit-row {
+  all: unset;
+  box-sizing: border-box;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 28px minmax(0, 1fr) auto;
+  gap: 18px;
+  align-items: start;
+  padding: 22px 16px 22px 12px;
+  cursor: pointer;
+  transition: background 0.25s var(--ease);
+}
+.habit-row:hover {
+  background: rgba(236, 232, 225, 0.03);
+}
+.habit-row:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: -2px;
+}
+/* Red cross while it's a habit, gold diamond once fixed */
+.habit-mark {
+  position: relative;
+  width: 16px;
+  height: 16px;
+  margin-top: 6px;
+}
+.habit-mark::before,
+.habit-mark::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 16px;
+  height: 2px;
+  background: var(--red);
+  transition: all 0.3s var(--ease);
+}
+.habit-mark::before {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+.habit-mark::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+.habit-row.is-fixed .habit-mark::before {
+  width: 12px;
+  height: 12px;
+  background: var(--gold);
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+.habit-row.is-fixed .habit-mark::after {
+  opacity: 0;
+}
+.habit-body {
+  display: grid;
+}
+.habit-bad {
+  color: var(--bone);
+  font: 600 clamp(18px, 1.6vw, 22px)/1.35 var(--font-display);
+  text-decoration: line-through;
+  text-decoration-color: transparent;
+  text-decoration-thickness: 2px;
+  transition: color 0.3s var(--ease), text-decoration-color 0.3s var(--ease);
+}
+.habit-row.is-fixed .habit-bad {
+  color: var(--dim);
+  text-decoration-color: var(--red);
+}
+/* Fix slides open underneath */
+.habit-fix-wrap {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.4s var(--ease);
+}
+.habit-row.is-fixed .habit-fix-wrap {
+  grid-template-rows: 1fr;
+}
+.habit-fix {
+  overflow: hidden;
+  color: var(--gold);
+  font-size: 17px;
+  line-height: 1.55;
+}
+.habit-row.is-fixed .habit-fix {
+  padding-top: 10px;
+}
+.habit-action {
+  margin-top: 4px;
+  padding: 5px 10px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.habit-row:hover .habit-action {
+  color: var(--bone);
+  border-color: var(--bone);
+}
+.habit-row.is-fixed .habit-action {
+  color: var(--gold);
+  border-color: rgba(230, 205, 148, 0.5);
+}
+@media (prefers-reduced-motion: reduce) {
+  .habit-pip,
+  .habit-bad,
+  .habit-fix-wrap,
+  .habit-mark::before,
+  .habit-mark::after {
+    transition: none;
+  }
+}
+@media (max-width: 900px) {
+  .habit-layout {
+    grid-template-columns: 1fr;
+  }
+  .habit-side {
+    position: static;
+  }
+}
+@media (max-width: 480px) {
+  .habit-row {
+    grid-template-columns: 22px minmax(0, 1fr);
+  }
+  .habit-action {
+    display: none;
+  }
+}
+
+/* ---------- "Where are you stuck?" rank finder ---------- */
+.rank-finder {
+  position: relative;
+  z-index: 1;
+  max-width: 1120px;
+  margin: 0 auto;
+}
+.rank-finder-picker {
+  display: grid;
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+  gap: 8px;
+  margin-bottom: 20px;
+}
+.rank-chip {
+  display: grid;
+  justify-items: center;
+  gap: 6px;
+  padding: 12px 4px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: rgba(10, 15, 20, 0.7);
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color 0.2s var(--ease), color 0.2s var(--ease), transform 0.25s var(--ease);
+}
+.rank-chip img {
+  width: 44px;
+  height: 44px;
+  opacity: 0.55;
+  filter: grayscale(0.6);
+  transition: opacity 0.2s var(--ease), filter 0.2s var(--ease);
+}
+.rank-chip:hover {
+  color: var(--bone);
+}
+.rank-chip:hover img {
+  opacity: 0.85;
+}
+.rank-chip.is-active {
+  border-color: var(--gold);
+  color: var(--gold);
+  transform: translateY(-3px);
+}
+.rank-chip.is-active img {
+  opacity: 1;
+  filter: none;
+}
+.rank-chip:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+.rank-finder-result {
+  display: grid;
+  grid-template-columns: 200px minmax(0, 1fr);
+  gap: clamp(20px, 4vw, 48px);
+  align-items: center;
+  padding: clamp(24px, 4vw, 40px);
+  border: 1px solid var(--line-strong);
+  border-top: 2px solid var(--gold);
+  border-radius: var(--radius);
+  background: rgba(10, 15, 20, 0.88);
+  animation: verdictIn 0.4s var(--ease) both;
+}
+.rank-finder-badge img {
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 12px 30px rgba(0, 0, 0, 0.5));
+}
+.rank-finder-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.rank-finder-stuck {
+  margin: 10px 0 22px;
+  color: var(--bone);
+  font: 600 clamp(20px, 2vw, 26px)/1.35 var(--font-display);
+}
+.rank-finder-copy ul {
+  list-style: none;
+  margin: 10px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+}
+.rank-finder-copy li {
+  position: relative;
+  padding-left: 22px;
+  color: var(--bone);
+  opacity: 0.85;
+}
+.rank-finder-copy li::before {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: 0.55em;
+  width: 7px;
+  height: 7px;
+  background: var(--gold);
+  transform: rotate(45deg);
+}
+.rank-finder-next {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-top: 24px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+}
+.rank-finder-next strong {
+  color: var(--bone);
+}
+@media (prefers-reduced-motion: reduce) {
+  .rank-finder-result {
+    animation: none;
+  }
+  .rank-chip {
+    transition: none;
+  }
+}
+@media (max-width: 800px) {
+  .rank-finder-picker {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+  .rank-finder-result {
+    grid-template-columns: 1fr;
+    justify-items: start;
+  }
+  .rank-finder-badge {
+    width: 110px;
+  }
+}
+
+/* ---------- Searchable help ---------- */
+.help-search-field {
+  display: grid;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+.help-search-field span {
+  color: var(--bone);
+  font-weight: 600;
+}
+.help-search-field input {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  background: var(--void);
+  color: var(--bone);
+  font: inherit;
+  font-size: 17px;
+}
+.help-search-field input::placeholder {
+  color: var(--muted);
+}
+.help-search-field input:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 1px;
+  border-color: transparent;
+}
+.help-topics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.help-topic {
+  padding: 8px 14px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  background: transparent;
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.help-topic:hover {
+  color: var(--bone);
+}
+.help-topic.is-active {
+  background: var(--bone);
+  border-color: var(--bone);
+  color: var(--void);
+}
+.help-topic:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+.help-count {
+  margin: 18px 0 0;
+  color: var(--dim);
+  font-size: 14px;
+}
+.help-empty {
+  margin-top: 20px;
+  padding: 24px;
+  border: 1px dashed var(--line-strong);
+  border-radius: var(--radius);
+  display: grid;
+  gap: 12px;
+  justify-items: start;
+  color: var(--muted);
 }
