@@ -9,7 +9,7 @@ const path = [
   { name: "Aim", text: "Crosshair placement and clean first shots.", slug: "aim-foundations", cta: "Aim Foundations" },
   { name: "Mechanics", text: "Movement, stopping and sensitivity you trust.", slug: "crosshair-sensitivity-lab", cta: "Sensitivity Lab" },
   { name: "Game Sense", text: "Timings, info and decisions under pressure.", slug: "game-sense-playbook", cta: "Game Sense Playbook" },
-  { name: "Consistency", text: "Routines and reviews that stop the rollercoaster.", slug: "vod-review-kit", cta: "VOD Review Kit" },
+  { name: "Consistency", text: "Routines and habits that stop the rollercoaster.", slug: "the-immortal-roadmap", cta: "The Immortal Roadmap" },
   { name: "Mindset", text: "Tilt control, confidence and knowing when to stop.", slug: "the-ranked-mindset", cta: "The Ranked Mindset" },
 ];
 

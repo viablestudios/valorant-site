@@ -83,7 +83,6 @@ const guides: Product[] = [
       "aim-foundations",
       "game-sense-playbook",
       "the-climb-bundle",
-      "vod-review-kit",
     ],
     files: [
       {
@@ -279,76 +278,13 @@ const guides: Product[] = [
       { label: "Length", value: "30 pages" },
       { label: "Delivery", value: "Instant download" },
     ],
-    related: ["the-immortal-roadmap", "vod-review-kit", "the-climb-bundle"],
+    related: ["the-immortal-roadmap", "the-climb-bundle"],
     files: [
       {
         name: "Game Sense Playbook",
         format: "PDF",
         sizeLabel: "15 MB",
         storageKey: "guides/game-sense-v1.pdf",
-      },
-    ],
-  },
-  {
-    id: "prd_vod_kit",
-    slug: "vod-review-kit",
-    name: "VOD Review Kit",
-    tagline: "Review your own games like a coach would.",
-    shortDescription:
-      "A framework and templates for turning replays into a short list of fixes.",
-    longDescription: [
-      "Watching replays without a plan mostly means watching yourself die. The kit gives you a 25-minute review process: what to pause on, what to write down and how to pick one thing to fix next session.",
-      "Includes printable and spreadsheet templates, plus a guide for reviewing with a friend or duo partner.",
-    ],
-    type: "digital",
-    category: "training-guides",
-    price: 699,
-    media: [
-      {
-        kind: "cover",
-        cover: {
-          title: "VOD Review Kit",
-          kicker: "Coaching tools",
-          edition: "Vol. 05",
-          tone: "red",
-          pattern: "bars",
-        },
-      },
-    ],
-    includes: [
-      "25-minute review process",
-      "Round-by-round template",
-      "Mistake categories",
-      "Duo review guide",
-      "Spreadsheet + PDF templates",
-    ],
-    forWho: [
-      "Players who want coaching-style feedback for free",
-      "Teams and duos",
-      "Content creators reviewing viewer games",
-    ],
-    specs: [
-      { label: "Format", value: "PDF + spreadsheet" },
-      { label: "Length", value: "16 pages + templates" },
-      { label: "Delivery", value: "Instant download" },
-    ],
-    related: [
-      "game-sense-playbook",
-      "the-immortal-roadmap",
-      "the-climb-bundle",
-    ],
-    files: [
-      {
-        name: "VOD Review Kit",
-        format: "PDF",
-        sizeLabel: "8 MB",
-        storageKey: "guides/vod-kit-v1.pdf",
-      },
-      {
-        name: "Review Templates",
-        format: "XLSX",
-        sizeLabel: "180 KB",
-        storageKey: "guides/vod-kit-templates.xlsx",
       },
     ],
   },
@@ -511,11 +447,11 @@ const bundles: Product[] = [
     id: "prd_climb_bundle",
     slug: "the-climb-bundle",
     name: "The Climb Bundle",
-    tagline: "The four guides we'd give a friend who wants to rank up.",
+    tagline: "The three guides we'd give a friend who wants to rank up.",
     shortDescription:
-      "The Immortal Roadmap, Aim Foundations, Game Sense Playbook and VOD Review Kit together.",
+      "The Immortal Roadmap, Aim Foundations and Game Sense Playbook together.",
     longDescription: [
-      "The Climb Bundle puts our core improvement system in one place: the Roadmap for structure, Aim Foundations for mechanics, the Game Sense Playbook for decisions and the VOD Review Kit for learning from every game.",
+      "The Climb Bundle puts our core improvement system in one place: the Roadmap for structure, Aim Foundations for mechanics and the Game Sense Playbook for decisions.",
     ],
     type: "digital",
     category: "bundles",
@@ -525,7 +461,7 @@ const bundles: Product[] = [
         kind: "cover",
         cover: {
           title: "The Climb Bundle",
-          kicker: "4 guides",
+          kicker: "3 guides",
           edition: "Bundle",
           tone: "gold",
           pattern: "stack",
@@ -538,13 +474,11 @@ const bundles: Product[] = [
       "the-immortal-roadmap",
       "aim-foundations",
       "game-sense-playbook",
-      "vod-review-kit",
     ],
     includes: [
       "The Immortal Roadmap",
       "Aim Foundations",
       "Game Sense Playbook",
-      "VOD Review Kit",
       "All future updates",
     ],
     forWho: [
@@ -552,8 +486,8 @@ const bundles: Product[] = [
       "Anyone who wants the full system",
     ],
     specs: [
-      { label: "Products", value: "4 guides" },
-      { label: "Total pages", value: "106" },
+      { label: "Products", value: "3 guides" },
+      { label: "Total pages", value: "90" },
       { label: "Delivery", value: "Instant download" },
     ],
     related: ["the-complete-arsenal", "the-immortal-roadmap"],
@@ -1000,16 +934,15 @@ export const products: Product[] = [
       "The Immortal Roadmap",
       "Aim Foundations",
       "Game Sense Playbook",
-      "VOD Review Kit",
     ],
     specs: [
       { label: "Type", value: "Digital guide collection" },
-      { label: "Contents", value: "Four training resources" },
+      { label: "Contents", value: "Three training resources" },
     ],
     faq: [],
     tagline: "A plan for ranked. Finally.",
     shortDescription:
-      "Four practical resources for aim, decision-making, review and a more consistent practice routine."
+      "Three practical resources for aim, decision-making and a more consistent practice routine."
   },
   {
     ...pick("wallpaper-vault"),
