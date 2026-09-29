@@ -79,7 +79,7 @@ export function CartDrawer() {
       ) : isEmpty ? (
         <div className={styles.empty}>
           <p className="display" style={{ fontSize: 40, lineHeight: 0.9 }}>
-            Emptier than your team&apos;s <span className="outline-red">utility</span> at 1v5.
+            Emptier than the <span className="outline-red">site</span> after your whole team rotated early.
           </p>
           <p style={{ color: "var(--muted)" }}>Add a guide, wallpaper or bit of desk gear and it&apos;ll show up here.</p>
           <Button

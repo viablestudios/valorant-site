@@ -57,20 +57,6 @@ export function Storefront({
             <ProductCard key={p.id} product={p} />
           ))}
         </div>
-        <div className="store-facts">
-          <p>
-            <strong>Know what’s included</strong>Open any product for its
-            contents and specifications.
-          </p>
-          <p>
-            <strong>Digital + physical</strong>Guides and wallpapers for your
-            screen. Cases and coasters for your setup.
-          </p>
-          <p>
-            <strong>Preview, with no charges</strong>Browse and save a bag.
-            Payments open when the store launches.
-          </p>
-        </div>
       </section>
       <section id="about" className="bundle-feature page-pad">
         <div className="bundle-copy">
@@ -111,6 +97,129 @@ export function Storefront({
             height={1800}
             sizes="(max-width:700px) 80vw, 35vw"
           />
+        </div>
+      </section>
+      <section id="mindset" className="mindset-section page-pad" aria-labelledby="mindset-heading">
+        <div className="section-heading">
+          <div>
+            <p className="eyebrow">No fake stats, we promise</p>
+            <h2 id="mindset-heading">Before Peakform. After Peakform.</h2>
+          </div>
+        </div>
+        <div className="mindset-grid">
+          <div className="mindset-card mindset-before">
+            <div className="mindset-card-art" aria-hidden="true">
+              <Image src="/images/wallpapers/wp-smoke.webp" alt="" fill sizes="(max-width:900px) 100vw, 45vw" />
+            </div>
+            <p className="mindset-label">Before Peakform</p>
+            <p className="mindset-loop">
+              Queue. Tilt. Blame. <span className="outline-red">Repeat.</span>
+            </p>
+            <ul className="mindset-list">
+              <li>Warm-up? Maybe one deathmatch if there&apos;s time.</li>
+              <li>Lose pistol round? Mental gone.</li>
+              <li>Miss an easy shot? Change sensitivity again.</li>
+              <li>Teammate makes one bad play? Suddenly you&apos;re writing a full essay in team chat.</li>
+              <li>Then it&apos;s straight back into another game hoping this one magically goes better.</li>
+            </ul>
+            <p className="mindset-close">Sound familiar?</p>
+          </div>
+          <span className="mindset-arrow" aria-hidden="true">
+            →
+          </span>
+          <div className="mindset-card mindset-after">
+            <div className="mindset-card-art" aria-hidden="true">
+              <Image src="/images/wallpapers/wp-reticle.webp" alt="" fill sizes="(max-width:900px) 100vw, 45vw" />
+            </div>
+            <p className="mindset-label">After Peakform</p>
+            <p className="mindset-loop">
+              Warm up. Focus. Review. <span className="gold">Improve.</span>
+            </p>
+            <ul className="mindset-list">
+              <li>You go into games with a plan.</li>
+              <li>You know what you&apos;re actually trying to improve instead of just spamming ranked.</li>
+              <li>Bad game? Review it.</li>
+              <li>Missed shot? Work out why.</li>
+              <li>Lost round? Move on and play the next one properly.</li>
+            </ul>
+            <p className="mindset-close">
+              You stop treating every loss like a personal attack and start focusing on the things you can actually
+              control.
+            </p>
+          </div>
+        </div>
+        <div className="mindset-callout">
+          <h3>
+            Less tilt. <span className="gold">More progress.</span>
+          </h3>
+          <p>
+            Peakform isn&apos;t about turning you into Radiant overnight. It&apos;s about building better habits,
+            making smarter decisions and giving you a proper way to improve instead of just queuing again and hoping
+            for the best.
+          </p>
+          <button className="gold-button" onClick={() => openProduct("the-climb-bundle")}>
+            Break the cycle <span aria-hidden="true">↗</span>
+          </button>
+        </div>
+      </section>
+      <section id="skills" className="skills-section page-pad" aria-labelledby="skills-heading">
+        <div className="section-heading">
+          <div>
+            <p className="eyebrow">The training side of Peakform</p>
+            <h2 id="skills-heading">What you&apos;ll actually improve.</h2>
+            <p>
+              No vague &ldquo;become a better player&rdquo; promises. These are the parts of your game Peakform is
+              actually built around.
+            </p>
+          </div>
+        </div>
+        <div className="skills-grid">
+          <div className="skill-card">
+            <div className="skill-card-art" aria-hidden="true">
+              <Image src="/images/agents/crop/harbor-clean.webp" alt="" fill sizes="280px" className="art-harbor" />
+            </div>
+            <h3>Aim</h3>
+            <p>
+              Build cleaner, more controlled mechanics so you&apos;re not relying on lucky flicks every round. Better
+              tracking, better first shots and fewer moments where your crosshair ends up sightseeing.
+            </p>
+          </div>
+          <div className="skill-card">
+            <div className="skill-card-art" aria-hidden="true">
+              <Image src="/images/agents/crop/cypher-clean.webp" alt="" fill sizes="280px" className="art-cypher" />
+            </div>
+            <h3>Crosshair Placement</h3>
+            <p>
+              Start putting your crosshair where the enemy is actually likely to be. Less dragging your aim halfway
+              across the screen. More being ready before the fight even starts.
+            </p>
+          </div>
+          <div className="skill-card">
+            <div className="skill-card-art" aria-hidden="true">
+              <Image src="/images/agents/crop/astra-clean.webp" alt="" fill sizes="280px" className="art-astra" />
+            </div>
+            <h3>Decision Making</h3>
+            <p>
+              Know when to push, when to hold, when to rotate and when to stop trying to be the hero. Better
+              decisions make good aim far more useful.
+            </p>
+          </div>
+          <div className="skill-card">
+            <div className="skill-card-art" aria-hidden="true">
+              <Image src="/images/agents/crop/brimstone-clean.webp" alt="" fill sizes="280px" className="art-brimstone" />
+            </div>
+            <h3>Consistency</h3>
+            <p>
+              Stop having one great game followed by three disasters. Build routines, habits and a more reliable way
+              to play so your performance doesn&apos;t depend on whether you &ldquo;feel on it&rdquo; that day.
+            </p>
+          </div>
+        </div>
+        <div className="skills-footer">
+          <p>Small improvements. Better habits. More rounds won.</p>
+          <button className="text-button" onClick={() => openProduct("the-climb-bundle")}>
+            Explore the Climb Bundle · {formatPrice(4999)} ↗
+          </button>
         </div>
       </section>
       <section id="collection" className="rank-climb page-pad has-art" aria-labelledby="rank-climb-heading">
@@ -200,7 +309,7 @@ export function Storefront({
             unsure about before buying, just get in touch.
           </p>
         </div>
-        <ContactForm />
+        <ContactForm products={products} />
       </section>
     </>
   );

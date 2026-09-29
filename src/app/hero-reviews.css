@@ -98,7 +98,7 @@
   pointer-events: auto;
 }
 .hero-pitch {
-  max-width: 315px;
+  max-width: 470px;
 }
 .hero-pitch h2 {
   font: 600 27px/1.2 var(--font-display);
@@ -382,8 +382,9 @@
     max-width: 100%;
   }
   .hero-pitch h2 {
-    font-size: 24px;
+    font-size: 21px;
     margin-bottom: 10px;
+    white-space: nowrap;
   }
   .hero-pitch h2 br {
     display: none;
@@ -1142,10 +1143,14 @@
 .contact-intro .muted {
   margin-top: 20px;
 }
-.contact-form {
+.contact-form-wrap {
   display: grid;
   gap: 18px;
   max-width: 560px;
+}
+.contact-form {
+  display: grid;
+  gap: 18px;
 }
 .contact-textarea {
   resize: vertical;
@@ -1247,5 +1252,272 @@
 @media (prefers-reduced-motion: reduce) {
   .bundle-feature::after {
     animation: none;
+  }
+}
+
+/* ---------- Leave a review (in the contact section) ---------- */
+.local-pill {
+  color: var(--gold);
+  border-color: rgba(230, 205, 148, 0.4);
+}
+.verified-pill {
+  color: #7ed08a;
+  border-color: rgba(126, 208, 138, 0.4);
+}
+
+.review-toggle {
+  margin-top: 18px;
+}
+
+.review-form {
+  display: grid;
+  gap: 18px;
+}
+
+.review-star-input {
+  display: flex;
+  gap: 6px;
+}
+.review-star-input button {
+  background: none;
+  border: 0;
+  padding: 0;
+  font-size: 26px;
+  line-height: 1;
+  color: var(--line-strong);
+  cursor: pointer;
+}
+.review-star-input button.on {
+  color: var(--gold);
+}
+.review-star-input button:hover {
+  color: var(--gold);
+}
+
+.review-form-sent {
+  display: grid;
+  gap: 12px;
+}
+.review-form-sent h3 {
+  font: 700 clamp(22px, 2.2vw, 30px)/1.25 var(--font-display);
+}
+
+.review-form-row {
+  display: grid;
+  gap: 18px;
+}
+@media (min-width: 520px) {
+  .review-form-row {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* ---------- Before/after mindset section ---------- */
+.mindset-grid {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 28px;
+}
+.mindset-card {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding: 32px;
+  border: 1px solid var(--line);
+  background: var(--void);
+}
+.mindset-card > *:not(.mindset-card-art) {
+  position: relative;
+  z-index: 1;
+}
+.mindset-card-art {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  opacity: 0.85;
+  filter: saturate(1.2);
+}
+.mindset-card-art img {
+  object-fit: cover;
+}
+.mindset-before .mindset-card-art img,
+.mindset-after .mindset-card-art img {
+  object-position: right;
+}
+.mindset-before::before,
+.mindset-after::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+.mindset-before::before {
+  background: linear-gradient(100deg, rgba(10, 15, 20, 0.94) 0%, rgba(10, 15, 20, 0.55) 55%, rgba(10, 15, 20, 0.3) 100%),
+    linear-gradient(0deg, rgba(255, 70, 85, 0.14), transparent 45%);
+}
+.mindset-after::before {
+  background: linear-gradient(100deg, rgba(10, 15, 20, 0.94) 0%, rgba(10, 15, 20, 0.55) 55%, rgba(10, 15, 20, 0.3) 100%),
+    linear-gradient(0deg, rgba(230, 205, 148, 0.12), transparent 45%);
+}
+.mindset-before {
+  border-top: 2px solid var(--red);
+}
+.mindset-after {
+  border-top: 2px solid var(--gold);
+}
+.mindset-label {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 14px;
+}
+.mindset-loop {
+  font: 700 clamp(24px, 2.6vw, 34px)/1.25 var(--font-display);
+  margin-bottom: 14px;
+}
+.mindset-arrow {
+  font-size: 28px;
+  color: var(--muted);
+}
+.mindset-list {
+  list-style: none;
+  margin: 0 0 16px;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+}
+.mindset-list li {
+  padding-left: 18px;
+  position: relative;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.5;
+}
+.mindset-before .mindset-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 6px;
+  height: 6px;
+  background: var(--red);
+}
+.mindset-after .mindset-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 6px;
+  height: 6px;
+  background: var(--gold);
+}
+.mindset-close {
+  font-size: 15px;
+  font-style: italic;
+  color: var(--bone);
+  border-top: 1px solid var(--line);
+  padding-top: 14px;
+}
+.mindset-callout {
+  margin-top: 40px;
+  padding-top: 36px;
+  border-top: 1px solid var(--line-strong);
+  text-align: center;
+  display: grid;
+  gap: 16px;
+  justify-items: center;
+}
+.mindset-callout h3 {
+  font: 800 clamp(28px, 3.4vw, 44px)/1.1 var(--font-display);
+  text-transform: uppercase;
+}
+.mindset-callout p {
+  max-width: 640px;
+  color: var(--muted);
+}
+
+/* ---------- What you'll actually improve ---------- */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+.skill-card {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding: 26px;
+  border: 1px solid var(--line);
+  background: var(--void);
+  border-left: 2px solid var(--red);
+}
+.skill-card > *:not(.skill-card-art) {
+  position: relative;
+  z-index: 1;
+}
+.skill-card-art {
+  position: absolute;
+  z-index: 0;
+  inset: 0 0 0 auto;
+  width: 46%;
+  opacity: 0.6;
+  mask-image: linear-gradient(90deg, transparent, #000 55%), linear-gradient(0deg, transparent, #000 30%);
+  mask-composite: intersect;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 55%), linear-gradient(0deg, transparent, #000 30%);
+  -webkit-mask-composite: source-in;
+}
+.skill-card-art img {
+  object-fit: cover;
+  object-position: top;
+}
+.skill-card-art img.art-cypher {
+  object-position: center 60%;
+}
+.skill-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: linear-gradient(100deg, var(--void) 42%, transparent 78%);
+  pointer-events: none;
+}
+.skill-card h3 {
+  font: 700 22px/1.2 var(--font-display);
+  margin-bottom: 10px;
+}
+.skill-card p {
+  color: var(--muted);
+  font-size: 15px;
+}
+.skills-footer {
+  margin-top: 32px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  border-top: 1px solid var(--line-strong);
+  padding-top: 20px;
+}
+
+@media (max-width: 900px) {
+  .mindset-grid {
+    grid-template-columns: 1fr;
+  }
+  .mindset-arrow {
+    transform: rotate(90deg);
+    justify-self: center;
+  }
+  .skills-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 560px) {
+  .skills-grid {
+    grid-template-columns: 1fr;
   }
 }

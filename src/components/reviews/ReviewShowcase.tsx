@@ -1,23 +1,41 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { Product, Review } from "@/lib/types";
 import { Sheet } from "@/components/ui/Sheet";
 import { FlickFeature } from "./FlickFeature";
+import { getLocalReviews, onLocalReviewsChange } from "@/lib/localReviews";
 import Image from "next/image";
 
-/** Samples stay explicitly labelled until replaced by genuine customer feedback. */
+/** Samples stay explicitly labelled until replaced by genuine customer feedback.
+ *  Reviews a visitor submits from this browser (see ContactForm) are merged in
+ *  client-side only — see lib/localReviews.ts for why they don't broadcast to
+ *  other visitors yet. */
 export function ReviewShowcase({
   products,
-  reviews,
+  reviews: sampleReviews,
 }: {
   products: Product[];
   reviews: Review[];
 }) {
+  const [localReviews, setLocalReviews] = useState<Review[]>([]);
   const [filter, setFilter] = useState("all");
   const [index, setIndex] = useState(0);
   const [open, setOpen] = useState(false);
   const [page, setPage] = useState(0);
+
+  useEffect(() => {
+    setLocalReviews(getLocalReviews());
+    return onLocalReviewsChange(() => {
+      setLocalReviews(getLocalReviews());
+      // Jump straight to the review just submitted so it's obviously "in" the section.
+      setFilter("all");
+      setIndex(0);
+      setPage(0);
+    });
+  }, []);
+
+  const reviews = [...localReviews, ...sampleReviews];
   const filtered = reviews.filter(
     (r) => filter === "all" || r.productSlug === filter,
   );
@@ -32,6 +50,14 @@ export function ReviewShowcase({
     setIndex(0);
     setPage(0);
   };
+  const tag = (r: Review) =>
+    r.id.startsWith("local-") ? (
+      <span className="sample-pill local-pill">Your review · pending check</span>
+    ) : r.placeholder ? (
+      <span className="sample-pill">Sample</span>
+    ) : r.verified ? (
+      <span className="sample-pill verified-pill">Verified buyer</span>
+    ) : null;
 
   return (
     <section
@@ -56,12 +82,12 @@ export function ReviewShowcase({
         <div className="review-score">
           <strong>{average}</strong>
           <div>
-            <span aria-label="4.8 out of 5 sample average">★★★★★</span>
-            <p>{reviews.length} sample reviews</p>
+            <span aria-label={`${average} out of 5 average`}>★★★★★</span>
+            <p>{reviews.length} reviews</p>
           </div>
         </div>
         <p className="sample-caption">
-          Fictional reviews for this store preview.
+          Fictional reviews for this store preview, plus anything you&apos;ve submitted from this browser.
         </p>
         <button className="text-button" onClick={() => setOpen(true)}>
           Browse all reviews ↗
@@ -92,7 +118,7 @@ export function ReviewShowcase({
         <article className="spotlight-review" key={active.id}>
           <div className="review-meta">
             <span>{productName(active.productSlug)}</span>
-            <span className="sample-pill">Sample</span>
+            {tag(active)}
           </div>
           <p
             className="spotlight-stars"
@@ -166,7 +192,7 @@ export function ReviewShowcase({
             <article key={r.id}>
               <div className="review-meta">
                 <span>{productName(r.productSlug)}</span>
-                <span className="sample-pill">Sample</span>
+                {tag(r)}
               </div>
               <p
                 className="spotlight-stars"

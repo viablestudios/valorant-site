@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>The Valorant Climb System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@600;700;800&family=Hanken+Grotesk:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0F1923;
+    --navy-deep: #0A0F14;
+    --red: #FF4655;
+    --gold: #E6CD94;
+    --bone: #ECE8E1;
+    --line: rgba(236, 232, 225, 0.16);
+    --line-strong: rgba(236, 232, 225, 0.32);
+    --ff-display: "Barlow", sans-serif;
+    --ff-body: "Hanken Grotesk", sans-serif;
+    --ff-mono: "Geist Mono", monospace;
+  }
+
+  * {
+    box-sizing: border-box;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--navy-deep);
+    color: var(--bone);
+    font-family: var(--ff-body);
+    font-size: 12.5pt;
+    line-height: 1.55;
+  }
+
+  @page {
+    size: A4;
+    margin: 26mm 20mm 24mm 20mm;
+  }
+
+  /* Fixed-position elements repeat on every printed page in Chromium print. */
+  .page-frame {
+    position: fixed;
+    inset: 8mm;
+    border: 1px solid rgba(230, 205, 148, 0.35);
+    pointer-events: none;
+    z-index: 0;
+  }
+  .footer-bar {
+    position: fixed;
+    left: 8mm;
+    right: 8mm;
+    bottom: 9mm;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--ff-mono);
+    font-size: 7.5pt;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--gold);
+    opacity: 0.85;
+    z-index: 1;
+  }
+
+  .content {
+    position: relative;
+    z-index: 2;
+  }
+
+  /* ---------- Cover ---------- */
+  .cover {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    page-break-after: always;
+    background:
+      radial-gradient(ellipse at 30% 20%, rgba(255, 70, 85, 0.14), transparent 55%),
+      radial-gradient(ellipse at 75% 80%, rgba(230, 205, 148, 0.12), transparent 55%),
+      var(--navy);
+  }
+  .cover-frame {
+    text-align: center;
+    padding: 0 18mm;
+  }
+  .cover-kicker {
+    font-family: var(--ff-mono);
+    font-size: 10pt;
+    letter-spacing: 0.35em;
+    color: var(--red);
+    text-transform: uppercase;
+    margin: 0 0 18mm;
+  }
+  .cover-title {
+    font-family: var(--ff-display);
+    font-weight: 800;
+    font-size: 46pt;
+    line-height: 1.05;
+    letter-spacing: 0.01em;
+    margin: 0 0 8mm;
+    color: var(--bone);
+  }
+  .cover-title::selection { background: var(--gold); }
+  .cover-subtitle {
+    font-family: var(--ff-body);
+    font-weight: 500;
+    font-size: 13pt;
+    color: var(--gold);
+    max-width: 130mm;
+    margin: 0 auto 12mm;
+  }
+  .cover-rule {
+    width: 40mm;
+    height: 2px;
+    background: var(--gold);
+    margin: 0 auto 12mm;
+  }
+  .cover-promise {
+    font-family: var(--ff-display);
+    font-weight: 600;
+    font-size: 15pt;
+    line-height: 1.4;
+    color: var(--bone);
+    max-width: 120mm;
+    margin: 0 auto 16mm;
+  }
+  .cover-meta {
+    font-family: var(--ff-mono);
+    font-size: 10pt;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--bone);
+    opacity: 0.85;
+  }
+  .cover-meta .dot { color: var(--red); margin: 0 8px; }
+
+  /* ---------- Body typography ---------- */
+  .content { padding: 4mm 2mm; background: var(--navy-deep); }
+
+  h1 {
+    font-family: var(--ff-display);
+    font-weight: 800;
+    font-size: 22pt;
+    letter-spacing: 0.01em;
+    color: var(--bone);
+    text-transform: uppercase;
+    border-left: 4px solid var(--red);
+    padding-left: 6mm;
+    margin: 0 0 10mm;
+  }
+  h1.part-break { page-break-before: always; padding-top: 6mm; }
+
+  h2 {
+    font-family: var(--ff-display);
+    font-weight: 700;
+    font-size: 15pt;
+    color: var(--gold);
+    margin: 10mm 0 5mm;
+  }
+
+  h3 {
+    font-family: var(--ff-display);
+    font-weight: 700;
+    font-size: 10.5pt;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--navy-deep);
+    background: var(--gold);
+    display: inline-block;
+    padding: 2mm 4mm;
+    margin: 8mm 0 4mm;
+  }
+
+  p, li { color: var(--bone); }
+  p { margin: 0 0 4mm; }
+
+  strong { color: var(--gold); font-weight: 700; }
+  em { color: var(--bone); font-style: italic; }
+
+  a { color: var(--gold); }
+
+  hr {
+    border: none;
+    border-top: 1px solid var(--line);
+    margin: 8mm 0;
+  }
+
+  blockquote {
+    margin: 6mm 0;
+    padding: 5mm 6mm;
+    border-left: 3px solid var(--gold);
+    background: rgba(230, 205, 148, 0.06);
+    font-family: var(--ff-display);
+    font-weight: 600;
+    font-size: 13pt;
+    color: var(--gold);
+  }
+  blockquote p { margin: 0; color: var(--gold); }
+
+  ul, ol { padding-left: 6mm; margin: 0 0 5mm; }
+  li { margin-bottom: 2mm; }
+
+  code {
+    font-family: var(--ff-mono);
+    font-size: 9pt;
+    color: var(--red);
+    background: rgba(255, 70, 85, 0.08);
+    padding: 0.5mm 1.5mm;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 5mm 0 6mm;
+    font-size: 10pt;
+    page-break-inside: avoid;
+  }
+  thead th {
+    font-family: var(--ff-display);
+    font-weight: 700;
+    font-size: 8.5pt;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--navy-deep);
+    background: var(--gold);
+    padding: 2.5mm 3mm;
+    text-align: left;
+  }
+  tbody td {
+    padding: 2.5mm 3mm;
+    border-bottom: 1px solid var(--line);
+    vertical-align: top;
+  }
+  tbody tr:nth-child(even) td {
+    background: rgba(236, 232, 225, 0.03);
+  }
+
+  input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 3.2mm;
+    height: 3.2mm;
+    border: 1px solid var(--gold);
+    margin-right: 2mm;
+    vertical-align: middle;
+    position: relative;
+    top: -0.5mm;
+  }
+
+  .cover-title, .cover-subtitle, .cover-promise, .cover-meta, .cover-kicker { position: relative; z-index: 2; }
+</style>
+</head>
+<body>
+  <div class="page-frame"></div>
+  <div class="footer-bar">
+    <span>THE VALORANT CLIMB SYSTEM · PEAKFORM</span>
+    <span>NOT AFFILIATED WITH RIOT GAMES</span>
+  </div>
+  {{COVER}}
+  <div class="content">
+    {{BODY}}
+  </div>
+</body>
+</html>

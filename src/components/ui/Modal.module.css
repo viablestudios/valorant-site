@@ -3,39 +3,52 @@
   inset: 0;
   z-index: 80;
   pointer-events: none;
+  visibility: hidden;
+  transition: visibility 0s 0.22s;
 }
 .open {
   pointer-events: auto;
+  visibility: visible;
+  transition-delay: 0s;
 }
 
 .scrim {
   position: absolute;
   inset: 0;
-  background: rgba(4, 7, 10, 0.8); /* solid scrim: a live blur re-rendered the whole page each frame */
+  background: rgba(4, 7, 10, 0.8);
   opacity: 0;
-  transition: opacity 0.25s ease-out;
+  transition: opacity 0.22s ease-out;
 }
 .open .scrim {
   opacity: 1;
 }
 
-.panel {
+.wrap {
   position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  overflow-y: auto;
+}
+
+.panel {
+  position: relative;
   display: flex;
   flex-direction: column;
+  max-height: min(88vh, 720px);
   background: var(--void);
-  border-left: 1px solid rgba(255, 70, 85, 0.4);
-  box-shadow: -24px 0 70px -24px var(--red-glow);
-  transform: translateX(100%);
-  transition: transform 0.28s var(--ease);
-  will-change: transform;
-  contain: layout paint style;
+  border: 1px solid var(--line-strong);
+  border-top: 2px solid var(--red);
+  box-shadow: 0 30px 80px -20px rgba(0, 0, 0, 0.8), 0 0 60px -20px var(--red-glow);
   outline: none;
+  opacity: 0;
+  transform: translateY(12px) scale(0.98);
+  transition: opacity 0.22s var(--ease), transform 0.22s var(--ease);
 }
 .open .panel {
+  opacity: 1;
   transform: none;
 }
 
@@ -44,9 +57,8 @@
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  padding: 18px 24px;
+  padding: 20px 24px;
   border-bottom: 1px solid var(--line);
-  min-height: 72px;
 }
 .headContent {
   min-width: 0;
@@ -75,6 +87,7 @@
   flex: 1;
   overflow-y: auto;
   overscroll-behavior: contain;
+  padding: 24px;
   scrollbar-width: thin;
   scrollbar-color: var(--line-strong) transparent;
 }
@@ -97,5 +110,3 @@
   border-top: 1px solid var(--line);
   background: var(--navy);
 }
-
-.root{visibility:hidden;transition:visibility 0s .28s}.open{visibility:visible;transition-delay:0s}.panel{border-left-color:var(--line-strong)}

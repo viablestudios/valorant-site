@@ -25,17 +25,16 @@ export function CenteredHero() {
       </h1>
       <div className="centered-hero-bottom">
         <div className="hero-pitch">
-          <h2>
-            Less queueing.{" "}
-            <br />
-            More cooking.
-          </h2>
+          <h2>Less queueing. More cooking.</h2>
           <p>
-            Guides, gear and setup upgrades for players who want to get better without turning every loss into a TED
-            Talk in team chat.
+            Guides, gear and setup upgrades for players who want to get
+            <br />
+            better without turning every loss into a TED Talk in team chat.
           </p>
           <p>
-            Play smarter, look sharper, and maybe stop blaming the matchmaking for five minutes.
+            Play smarter, look sharper, and maybe stop blaming the
+            <br />
+            matchmaking for five minutes.
           </p>
         </div>
         <div className="hero-action">
