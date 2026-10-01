@@ -996,20 +996,37 @@ export const products: Product[] = [
     badges: ["bestseller"],
     bundleOf: undefined,
     related: [],
+    media: [
+      {
+        kind: "cover",
+        cover: {
+          title: "The Climb Bundle",
+          kicker: "Iron → Immortal",
+          edition: "Training system",
+          tone: "gold",
+          pattern: "stack",
+        },
+      },
+    ],
     includes: [
-      "The Immortal Roadmap",
-      "Aim Foundations",
-      "Game Sense Playbook",
-      "VOD Review Kit",
+      "Mechanics: aim, movement and crosshair lessons",
+      "Game Intelligence: decisions, positioning and reading the round",
+      "The Climb: a roadmap for your rank, through to Ascendant → Immortal",
+      "Short lessons in rank order that you work through at your own pace",
+      "Decision scenarios, checklists and a post-game reflection",
     ],
     specs: [
-      { label: "Type", value: "Digital guide collection" },
-      { label: "Contents", value: "Four training resources" },
+      { label: "Type", value: "Online training platform" },
+      { label: "Access", value: "One licence key, linked to your Peakform account" },
+      { label: "Devices", value: "Up to 3 trusted devices" },
     ],
     faq: [],
     tagline: "A plan for ranked. Finally.",
     shortDescription:
-      "Four practical resources for aim, decision-making, review and a more consistent practice routine."
+      "An online training system for aim, decision-making and a steady practice routine, with lessons in rank order that you take at your own pace.",
+    longDescription: [
+      "Tell it your rank, role and what's holding you back, and it builds your plan: short lessons, drills to try in your next game and a quick reflection afterwards. Progress shows what you've completed, not a promise of RR.",
+    ],
   },
   {
     ...pick("wallpaper-vault"),

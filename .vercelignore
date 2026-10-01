@@ -1,0 +1,12 @@
+# Never upload local secrets, build output or the original artwork folder to Vercel
+node_modules
+.next
+.next-prod
+out
+.env
+.env.local
+*.tsbuildinfo
+next-env.d.ts
+/.claude
+/docs
+/Images

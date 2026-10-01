@@ -5,56 +5,56 @@ import { useStoreUI } from "@/components/store/StoreUI";
 
 /**
  * "Where are you stuck?" Pick your rank to see what usually holds players back there,
- * what to work on next and which Climb Bundle guide covers it. Edit the ranks below.
+ * what to work on next and which part of the Climb Bundle covers it. Edit the ranks below.
  */
 const ranks: { name: string; stuck: string; focus: string[]; guide: string }[] = [
   {
     name: "Iron",
     stuck: "Most fights are lost before the first shot: crosshair aimed at the floor, and shooting while running.",
     focus: ["Keep your crosshair at head height while you move.", "Stop moving before you shoot."],
-    guide: "Aim Foundations",
+    guide: "Mechanics",
   },
   {
     name: "Bronze",
     stuck: "Peeking the same angle twice and dying with utility still in your pocket.",
     focus: ["After a kill, move to a new spot before the next fight.", "Use your utility before you peek, not after."],
-    guide: "Aim Foundations",
+    guide: "Mechanics",
   },
   {
     name: "Silver",
     stuck: "Winning duels but losing rounds, because everyone is playing a different game.",
     focus: ["Stay close enough to trade your teammate.", "Call where you died, every time."],
-    guide: "Game Sense Playbook",
+    guide: "Game Intelligence",
   },
   {
     name: "Gold",
     stuck: "Your aim is fine. Your economy isn't: random force buys and full buys nobody else matched.",
     focus: ["Buy with your team, even when it's a save.", "Learn what the enemy can afford next round."],
-    guide: "Game Sense Playbook",
+    guide: "Game Intelligence",
   },
   {
     name: "Platinum",
     stuck: "You're predictable. Same site, same timing, same peek, and better teams read it.",
     focus: ["Change your pace between rounds.", "Get information before you commit to a site."],
-    guide: "Game Sense Playbook",
+    guide: "Game Intelligence",
   },
   {
     name: "Diamond",
     stuck: "Mid-round calls: rotating too early, chasing kills and giving up space for nothing.",
     focus: ["Play for time and information, not just kills.", "Review your deaths from the last three games."],
-    guide: "VOD Review Kit",
+    guide: "The Climb",
   },
   {
     name: "Ascendant",
     stuck: "Consistency. One great game, then two where you're not there mentally.",
     focus: ["Warm up the same way before every session.", "Set a stop rule for losing streaks and stick to it."],
-    guide: "The Immortal Roadmap",
+    guide: "The Climb",
   },
   {
     name: "Immortal",
     stuck: "The margins are tiny now. Every small habit shows, good or bad.",
     focus: ["Review your games against players above you.", "Tighten comms: short, early and useful."],
-    guide: "VOD Review Kit",
+    guide: "The Climb",
   },
 ];
 

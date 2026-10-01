@@ -5,7 +5,7 @@ import { useStoreUI } from "@/components/store/StoreUI";
 
 /**
  * "Pick your weakness", styled like agent select. Tap a skill to lock it in: it expands
- * with the signs you have that problem, one drill for tonight and the Climb Bundle guide
+ * with the signs you have that problem, one drill for tonight and the part of the Climb Bundle
  * that covers it. The other skills shrink to strips you can tap to switch. Edit below.
  */
 const skills = [
@@ -20,7 +20,7 @@ const skills = [
       "You flick past heads more often than you hit them.",
     ],
     drill: "Ten minutes in the range: track bots at head height, then take 20 first-shot kills without moving.",
-    guide: "Aim Foundations",
+    guide: "Mechanics",
   },
   {
     title: "Crosshair Placement",
@@ -33,7 +33,7 @@ const skills = [
       "Enemies peek you and you're already a step behind.",
     ],
     drill: "Walk a map in a custom game and keep your crosshair at head height on every corner you pass.",
-    guide: "Aim Foundations",
+    guide: "Mechanics",
   },
   {
     title: "Decision Making",
@@ -46,7 +46,7 @@ const skills = [
       "You chase kills after the round is already won or lost.",
     ],
     drill: "Before every round of your next game, decide one thing: where you're playing, and why.",
-    guide: "Game Sense Playbook",
+    guide: "Game Intelligence",
   },
   {
     title: "Consistency",
@@ -59,7 +59,7 @@ const skills = [
       "One bad round and the rest of the match goes with it.",
     ],
     drill: "Do the same warm-up before every session for a week, and stop after two losses in a row.",
-    guide: "The Immortal Roadmap",
+    guide: "The Climb",
   },
 ];
 

@@ -14,6 +14,7 @@ export function CheckoutForm() {
   const { formatPrice } = useCurrency();
   const { totals, setStep } = useCart();
   const hasDigital = totals.lines.some((l) => l.product.type === "digital");
+  const hasClimb = totals.lines.some((l) => l.product.slug === "the-climb-bundle");
   const [agreed, setAgreed] = useState(false);
   const [tried, setTried] = useState(false);
   const ready = !hasDigital || agreed;
@@ -26,6 +27,14 @@ export function CheckoutForm() {
         Your basket totals {formatPrice(totals.total)}. Payments and downloads are not available in this preview. Your
         basket stays saved on this device.
       </p>
+
+      {hasClimb && (
+        <p className="muted">
+          The Climb Bundle is an online course, not a download. After payment you get an activation key by email that
+          links the course to your Peakform account. You can use it on up to 3 of your own devices, and you can replace
+          up to 2 of them in any 30 days.
+        </p>
+      )}
 
       {hasDigital && (
         <label className="refund-consent">

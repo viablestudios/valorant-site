@@ -105,7 +105,7 @@ export function SensCheck() {
           <div className="sens-next">
             <p>
               Then leave it alone. Changing it after every bad game stops your muscle memory from ever settling.{" "}
-              <strong>Aim Foundations</strong>, part of the Climb Bundle, helps you train it.
+              The <strong>Mechanics</strong> lessons in the Climb Bundle help you train it.
             </p>
             <button className="text-button" onClick={() => openProduct("the-climb-bundle")}>
               See the Climb Bundle ↗
