@@ -777,3 +777,12 @@ html {
     letter-spacing: 0.1em;
   }
 }
+/* "Your game. Your setup. Upgraded." - the heading and the two product cards sit in a narrower, centred column (the background art stays full width) */
+.four-shop > .section-heading,
+.four-shop > .currency-note,
+.four-shop > .digital-product-grid {
+  max-width: 960px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.four-shop > .digital-product-grid { gap: 24px; }

@@ -36,7 +36,7 @@ export function ReviewShowcase({
     });
   }, []);
 
-  const reviews = [...localReviews, ...sampleReviews];
+  const reviews = [...localReviews, ...sampleReviews].filter((r) => products.some((p) => p.slug === r.productSlug));
   const filtered = reviews.filter(
     (r) => filter === "all" || r.productSlug === filter,
   );

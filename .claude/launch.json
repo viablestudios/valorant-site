@@ -1,6 +1,7 @@
 {
   "version": "0.0.1",
   "configurations": [
-    { "name": "peakform", "runtimeExecutable": "npm", "runtimeArgs": ["run", "dev"], "port": 3000 }
+    { "name": "peakform", "runtimeExecutable": "npm", "runtimeArgs": ["run", "dev"], "port": 3000 },
+    { "name": "climb-prototype", "runtimeExecutable": "python", "runtimeArgs": ["-m", "http.server", "3100", "--directory", "C:/Users/jyron/OneDrive/Documents/peakform-climb"], "port": 3100 }
   ]
 }

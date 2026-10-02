@@ -3,9 +3,13 @@
  * data files — so moving products into a database or CMS means rewriting this
  * file and nothing else. They're async for exactly that reason.
  */
-import { products } from "@/lib/data/products";
-import { reviews } from "@/lib/data/reviews";
+import { products as allProducts } from "@/lib/data/products";
+import { reviews as allReviews } from "@/lib/data/reviews";
 import type { CategorySlug, Product, Review, WallpaperDevice, WallpaperStyle } from "@/lib/types";
+
+// Physical products stay in the source catalogue for a later relaunch.
+const products = allProducts.filter((p) => p.slug === "the-climb-bundle" || p.slug === "wallpaper-vault");
+const reviews = allReviews.filter((r) => products.some((p) => p.slug === r.productSlug));
 
 export async function getAllProducts(): Promise<Product[]> {
   return products;

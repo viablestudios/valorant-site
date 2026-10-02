@@ -24,7 +24,7 @@ Port 3000 may already be occupied by an older session. The latest local preview 
 - No decorative serif or italic display type anywhere. Headings use the upright display face; emphasis is gold colour at the same weight, so the tone stays serious and purposeful.
 - Premium gold accents, restrained gamer humour, large product images and clear prices.
 - Phoenix section must not put decorative text behind its real heading.
-- Exactly four sellable products: Climb Bundle £49.99; Phone cases £24.99; Coasters £14.99; Wallpapers £10.99. Each shows a crossed-out "was" price (£79.99 / £39.99 / £23.99 / £17.99) via `compareAtPrice`; these must be genuine prior prices before launch (UK pricing rules).
+- Exactly four sellable products: Path to Immortal: Guide £49.99; Phone cases £24.99; Coasters £14.99; Wallpapers £10.99. Each shows a crossed-out "was" price (£79.99 / £39.99 / £23.99 / £17.99) via `compareAtPrice`; these must be genuine prior prices before launch (UK pricing rules).
 - All 32 original images are represented in the artwork gallery.
 
 ## Where to edit
@@ -60,10 +60,11 @@ CSS import order is globals → readability → hero-reviews. The older `Hero.ts
 - Product cards explicitly use `variant="full"`; image rendering uses quality 95. Thumbnails are for cart-size previews, not large product cards.
 - Original artwork: `Images/`. Browser-safe copies: `public/images/collection/`; mapping is in `gallery.ts`.
 - Product images are concept visuals, not evidence of manufactured specifications or testing.
+- Shop card pictures (2 October 2026): Path to Immortal: Guide uses the poster `public/images/products/path-to-immortal-guide.webp` (4:5, shown in full on the card via `cardRatio`); Wallpapers uses `wallpapers-all-agents.webp`, a 1280 x 1600 (4:5) crowd of all 29 playable agents built from Riot's official agent portraits (valorant-api.com), which are kept in `Images/agents/` and turned into the picture by `python scripts/make-agents-image.py`. Riot owns that art, so confirm usage rights before launch. The collection section (`.four-shop`) is capped at 960 px and centred.
 
 ## Refund policy
 
-- Digital products (Climb Bundle, Wallpapers) are non-refundable once download/access starts. This relies on the required consent checkbox in `CheckoutForm.tsx` (UK Consumer Contracts Regulations 2013 reg. 37). Keep it when real payments are connected, and store the consent with the order.
+- Digital products (Path to Immortal: Guide, Wallpapers) are non-refundable once download/access starts. This relies on the required consent checkbox in `CheckoutForm.tsx` (UK Consumer Contracts Regulations 2013 reg. 37). Keep it when real payments are connected, and store the consent with the order.
 - Faulty or misdescribed digital files must still be fixed, replaced or refunded (Consumer Rights Act 2015). Don't remove that line from the notices.
 
 ## Performance rules

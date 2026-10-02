@@ -7,7 +7,7 @@ import { ProductCard } from "@/components/product/ProductCard";
 import { CenteredHero } from "./CenteredHero";
 import { ReviewShowcase } from "@/components/reviews/ReviewShowcase";
 import { ContactForm } from "./ContactForm";
-import { SensCheck } from "./SensCheck";
+import { PathToImmortal } from "./PathToImmortal";
 import { SkillSelect } from "./SkillSelect";
 import { HabitFlip } from "./HabitFlip";
 import { RankFinder } from "./RankFinder";
@@ -22,7 +22,7 @@ const faqs: Faq[] = [
   { topic: "Buying", q: "Do I get instant access to digital products?", a: "For digital guides and training resources, access is provided after your purchase is completed. You won’t need to wait for something to arrive in the post before you can start improving." },
   { topic: "Training", q: "Can I use the guides at any Valorant rank?", a: "Yes. The fundamentals behind aim, positioning, decision-making, consistency and good practice habits apply across the ranked ladder. Some advice will become more advanced as you improve, but you don’t need to be a high-ranked player to get started." },
   { topic: "About Peakform", q: "What makes Peakform different from free Valorant advice online?", a: "There’s already an endless amount of Valorant content online. The problem is knowing what’s actually useful. Peakform is built around keeping things focused, practical and easy to apply rather than making you sit through 40 minutes of filler to find one useful tip." },
-  { topic: "Buying", q: "Do you sell physical products as well as training content?", a: "Yes. Peakform isn’t only about improving your gameplay. The store also features gaming-inspired artwork and everyday gear, so you can upgrade the setup as well as the player sitting in front of it." },
+  { topic: "Buying", q: "What can I buy from Peakform?", a: "We currently sell two digital products: Path to Immortal: Guide and the Wallpapers collection. Training for your game, artwork for your screen." },
   { topic: "Orders and refunds", q: "What if I need help with an order?", a: "If something isn’t right with your order or you’re unsure about a product, get in touch with us and we’ll help you sort it. No support ticket maze. No boss battle before you reach a human." },
   { topic: "Orders and refunds", q: "Can I return an item?", a: "Physical products are covered by our returns policy. Digital products, including Path to Immortal: Guide and wallpapers, are non-refundable once your download or access has started — you’ll confirm this at checkout. If a digital file is faulty or not as described, we’ll fix it, replace it or refund you." },
   { topic: "About Peakform", q: "Is Peakform affiliated with Riot Games or Valorant?", a: "No. Peakform is an independent gaming brand and is not affiliated with Riot Games. Valorant and related trademarks belong to Riot Games. We respect Riot Games and its community, and we aim to ensure our products and content follow their policies, terms and intellectual property guidelines." },
@@ -49,21 +49,21 @@ export function Storefront({
         <div className="section-heading">
           <div>
             <p className="eyebrow">The collection</p>
-            <h2>Four upgrades. Zero filler.</h2>
-            <p>Pick your next advantage. Sadly, a new duo isn’t included.</p>
+            <h2>Your game. Your setup. Upgraded.</h2>
+            <p>Build better ranked habits with Path to Immortal. Make your screen your own with Wallpapers.</p>
           </div>
           <a className="subtle-link" href="#help">
             Before you buy ↗
           </a>
         </div>
         <p className="currency-note">{note}</p>
-        <div className="four-product-grid">
+        <div className="four-product-grid digital-product-grid">
           {products.map((p) => (
             <ProductCard key={p.id} product={p} reviews={reviews.filter((r) => r.productSlug === p.slug)} />
           ))}
         </div>
       </section>
-      <SensCheck />
+      <PathToImmortal price={products.find((p) => p.slug === "the-climb-bundle")!.price} />
       <section id="mindset" className="mindset-section page-pad" aria-labelledby="mindset-heading">
         <HabitFlip
           intro={

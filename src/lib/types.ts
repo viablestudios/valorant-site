@@ -33,7 +33,7 @@ export interface CoverSpec {
 }
 
 export type ProductMedia =
-  | { kind: "image"; src: string; thumb?: string; alt: string; ratio: string; /** CSS object-position, e.g. "50% 0%" to keep the top in view */ position?: string }
+  | { kind: "image"; src: string; thumb?: string; alt: string; ratio: string; /** CSS object-position, e.g. "50% 0%" to keep the top in view */ position?: string; /** Shape of the picture on the shop card when it differs from `ratio`, e.g. "1/1" */ cardRatio?: string }
   | { kind: "cover"; cover: CoverSpec };
 
 /** A file delivered after purchase. `storageKey` points at private storage (S3, R2, Supabase…). */

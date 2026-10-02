@@ -5,7 +5,7 @@ import { useStoreUI } from "@/components/store/StoreUI";
 
 /**
  * "Pick your weakness", styled like agent select. Tap a skill to lock it in: it expands
- * with the signs you have that problem, one drill for tonight and the Climb Bundle guide
+ * with the signs you have that problem, one drill for tonight and the Path to Immortal: Guide
  * that covers it. The other skills shrink to strips you can tap to switch. Edit below.
  */
 const skills = [

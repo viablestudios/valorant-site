@@ -25,7 +25,7 @@ export function ProductCard({ product, priority, reviews = [] }: { product: Prod
 
   return (
     <article className={`${styles.card} ${product.badges?.includes("bestseller") ? styles.featured : ""}`}>
-      <div className={styles.stage} data-cover={isCover || undefined}>
+      <div className={styles.stage} data-cover={isCover || undefined} style={media.kind === "image" && media.cardRatio ? { aspectRatio: media.cardRatio } : undefined}>
         <div className={styles.mediaBox}>
           <ProductMedia product={product} variant="full" priority={priority} sizes="(min-width: 1200px) 25vw, (min-width: 600px) 50vw, 100vw" />
         </div>

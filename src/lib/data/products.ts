@@ -925,6 +925,16 @@ export const products: Product[] = [
   {
     ...pick("the-climb-bundle"),
     name: "Path to Immortal: Guide",
+    media: [
+      {
+        kind: "image",
+        src: "/images/products/path-to-immortal-guide.webp",
+        thumb: "/images/products/path-to-immortal-guide-thumb.webp",
+        alt: "Path to Immortal, a guide by Peakform: a rank ladder from Iron to Immortal beside the five skills covered, aim, utility, game sense, teamplay and consistency",
+        ratio: "4/5",
+        cardRatio: "4/5", // the whole poster shows on the shop card, uncropped
+      },
+    ],
     price: 4999,
     compareAtPrice: 7999, // crossed-out "was" price
     badges: ["bestseller"],
@@ -934,15 +944,21 @@ export const products: Product[] = [
       "The Immortal Roadmap",
       "Aim Foundations",
       "Game Sense Playbook",
+      "94 lessons, rank paths and a personal training dashboard",
+      "Strats and saved video lineups (coach review pending)",
+      "Map guides, warm-ups and daily decision scenarios",
+      "Progress tracking, reflections and lesson notes",
+      "Rank checks, final review and certificate after coach approval",
+      "Lifetime access on up to 3 personal devices",
     ],
     specs: [
-      { label: "Type", value: "Digital guide collection" },
-      { label: "Contents", value: "Three training resources" },
+      { label: "Type", value: "Digital course and training toolkit" },
+      { label: "Contents", value: "94 lessons, dashboard and practice tools" },
     ],
     faq: [],
     tagline: "A plan for ranked. Finally.",
     shortDescription:
-      "Three practical resources for aim, decision-making and a more consistent practice routine."
+      "A structured Valorant course with 94 lessons, a personal dashboard, strats, map guides and practice tools to make every session count."
   },
   {
     ...pick("wallpaper-vault"),
@@ -957,10 +973,11 @@ export const products: Product[] = [
     media: [
       {
         kind: "image",
-        src: "/images/collection/art-25.jpg",
-        alt: "Astra wallpaper collection preview",
-        position: "50% 0%", // keep the ASTRA title and her face in the square card
-        ratio: "4/3",
+        src: "/images/products/wallpapers-all-agents.webp",
+        thumb: "/images/products/wallpapers-all-agents-thumb.webp",
+        alt: "All 29 Valorant agents together in one wallpaper collection preview",
+        ratio: "4/5",
+        cardRatio: "4/5", // same shape as the Path to Immortal poster, so the two cards line up
       },
     ],
     tagline: "New background.",

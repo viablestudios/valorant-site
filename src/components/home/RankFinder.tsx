@@ -5,7 +5,7 @@ import { useStoreUI } from "@/components/store/StoreUI";
 
 /**
  * "Where are you stuck?" Pick your rank to see what usually holds players back there,
- * what to work on next and which Climb Bundle guide covers it. Edit the ranks below.
+ * what to work on next and which Path to Immortal: Guide covers it. Edit the ranks below.
  */
 const ranks: { name: string; stuck: string; focus: string[]; guide: string }[] = [
   {

@@ -2291,3 +2291,7 @@
   justify-items: start;
   color: var(--muted);
 }
+
+/* The live collection currently contains two digital products. */
+.digital-product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+@media (max-width: 600px) { .digital-product-grid { grid-template-columns: 1fr; } }
