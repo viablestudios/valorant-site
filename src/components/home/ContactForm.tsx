@@ -18,6 +18,13 @@ export function ContactForm({ products }: { products: Product[] }) {
   const [error, setError] = useState("");
   const [reviewOpen, setReviewOpen] = useState(false);
 
+  function finishReviewSubmission() {
+    setReviewOpen(false);
+    window.setTimeout(() => {
+      document.getElementById("reviews")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 50);
+  }
+
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const form = e.currentTarget;
@@ -91,7 +98,7 @@ export function ContactForm({ products }: { products: Product[] }) {
       </button>
 
       <Modal open={reviewOpen} onClose={() => setReviewOpen(false)} label="Leave a review" width={860} header={<h2 className="display" style={{ fontSize: 28 }}>Leave a review</h2>}>
-        <ReviewForm products={products} onDone={() => setReviewOpen(false)} />
+        <ReviewForm products={products} onDone={finishReviewSubmission} />
       </Modal>
     </div>
   );
@@ -137,6 +144,7 @@ function ReviewForm({ products, onDone }: { products: Product[]; onDone: () => v
       setStatus("sent");
       form.reset();
       setRating(0);
+      onDone();
     } catch (err) {
       setStatus("error");
       setError(err instanceof Error ? err.message : "Review could not be sent.");

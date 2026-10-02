@@ -105,10 +105,10 @@ export function SensCheck() {
           <div className="sens-next">
             <p>
               Then leave it alone. Changing it after every bad game stops your muscle memory from ever settling.{" "}
-              <strong>Aim Foundations</strong>, part of the Climb Bundle, helps you train it.
+              <strong>Aim Foundations</strong>, part of Path to Immortal: Guide, helps you train it.
             </p>
             <button className="text-button" onClick={() => openProduct("the-climb-bundle")}>
-              See the Climb Bundle ↗
+              See Path to Immortal: Guide ↗
             </button>
           </div>
         </div>

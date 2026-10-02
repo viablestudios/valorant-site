@@ -108,10 +108,10 @@ export function SkillSelect() {
               </div>
               <div className="skill-lane-next">
                 <p>
-                  The full training plan is in <strong>{s.guide}</strong>, part of the Climb Bundle.
+                  The full training plan is in <strong>{s.guide}</strong>, part of Path to Immortal: Guide.
                 </p>
                 <button className="text-button" onClick={() => openProduct("the-climb-bundle")}>
-                  See the Climb Bundle ↗
+                  See Path to Immortal: Guide ↗
                 </button>
               </div>
             </div>
