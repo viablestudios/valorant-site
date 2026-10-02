@@ -86,6 +86,15 @@ CSS import order is globals → readability → hero-reviews. The older `Hero.ts
 - Checkout is a clearly labelled preview: no payment, order fulfilment, email or download is performed.
 - Older payment/storage helper code is present but is not a production integration. Do not assume its existence means checkout is live.
 
+## Reviews — protected customer data
+
+- `content/reviews.json` contains the owner's genuine customer reviews currently approved for the shop.
+- Do **not** delete, regenerate, rewrite, replace, relabel, reseed, or bulk-edit these reviews unless the owner explicitly asks for that exact review change.
+- Do not restore the old fictional/sample review set to the storefront or mix sample reviews into the live review totals.
+- Preserve each review's product assignment, handle, rating and wording. Handles that already begin with `@` must not receive a second `@`.
+- Unknown historical review dates are intentionally left blank and should remain hidden rather than invented.
+- Changes elsewhere on the site must leave these customer reviews untouched.
+
 ## Verification and remaining maintenance
 
 Run the content checks and production build after changes. Check the hero at desktop and phone widths, product filters, review paging, gallery enlargement, currency changes, bag and keyboard Escape/focus.

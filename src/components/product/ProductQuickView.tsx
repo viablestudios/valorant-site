@@ -12,6 +12,7 @@ import { Stars } from "@/components/ui/Stars";
 import { categoryBySlug } from "@/lib/data/categories";
 import {useCurrency} from "@/components/store/CurrencyProvider";
 import type { FAQItem, Product, Review } from "@/lib/types";
+import { summarizeReviews } from "@/lib/reviewDisplay";
 import { FAQ } from "./FAQ";
 import { GuideCover } from "./GuideCover";
 import { badgeLabel } from "./ProductCard";
@@ -85,7 +86,9 @@ function ProductDetail({
   const [variant, setVariant] = useState(product.variants?.[0]?.id);
   const [qty, setQty] = useState(1);
   const media = product.media[0];
-  const avg = reviews.length ? reviews.reduce((s, r) => s + r.rating, 0) / reviews.length : 0;
+  // Rating and count come only from this product's reviews (genuine ones only, once it has any).
+  const summary = summarizeReviews(reviews);
+  const avg = summary.average;
   const isDigital = product.type === "digital";
   const inCart = isDigital && has(product.id);
 
@@ -124,7 +127,7 @@ function ProductDetail({
             <button className={styles.rating} onClick={onAllReviews}>
               <Stars rating={avg} />
               <span>
-                {avg.toFixed(1)} · {reviews.length} sample review{reviews.length === 1 ? "" : "s"}
+                {avg.toFixed(1)} · {summary.count} {summary.placeholder ? "sample " : ""}review{summary.count === 1 ? "" : "s"}
               </span>
             </button>
           )}

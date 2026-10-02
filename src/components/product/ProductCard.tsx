@@ -6,6 +6,7 @@ import { Price } from "@/components/ui/Price";
 import { useStoreUI } from "@/components/store/StoreUI";
 import { categoryBySlug } from "@/lib/data/categories";
 import { Stars } from "@/components/ui/Stars";
+import { reviewBadge, reviewHandle, summarizeReviews } from "@/lib/reviewDisplay";
 import type { Product, Review } from "@/lib/types";
 import { ProductMedia } from "./ProductMedia";
 import styles from "./ProductCard.module.css";
@@ -16,8 +17,11 @@ export function ProductCard({ product, priority, reviews = [] }: { product: Prod
   const { openProduct } = useStoreUI();
   const media = product.media[0];
   const isCover = media.kind === "cover";
-  const average = reviews.length ? reviews.reduce((sum, r) => sum + r.rating, 0) / reviews.length : 0;
-  const featured = reviews.find((r) => r.rating === 5) ?? reviews[0];
+  // Average and count come only from THIS product's reviews (real ones only, once it has any).
+  const summary = summarizeReviews(reviews);
+  const average = summary.average;
+  const pool = reviews.filter((r) => !r.placeholder).length ? reviews.filter((r) => !r.placeholder) : reviews;
+  const featured = pool.find((r) => r.rating === 5) ?? pool[0];
 
   return (
     <article className={`${styles.card} ${product.badges?.includes("bestseller") ? styles.featured : ""}`}>
@@ -52,14 +56,17 @@ export function ProductCard({ product, priority, reviews = [] }: { product: Prod
             <button className={styles.ratingRow} onClick={() => openProduct(product.slug)}>
               <Stars rating={average} size={14} />
               <span>
-                {average.toFixed(1)} from {reviews.length} sample reviews
+                {average.toFixed(1)} from {summary.count} {summary.placeholder ? "sample " : ""}review{summary.count === 1 ? "" : "s"}
               </span>
             </button>
             <figure className={styles.quote}>
-              <blockquote>&ldquo;{featured.title}&rdquo;</blockquote>
+              <blockquote>&ldquo;{featured.title || (featured.body.length > 90 ? `${featured.body.slice(0, 90).trim()}…` : featured.body)}&rdquo;</blockquote>
               <figcaption>
-                @{featured.handle}
-                {featured.placeholder && <span className={styles.samplePill}>Sample</span>}
+                {reviewHandle(featured)}
+                {(() => {
+                  const b = reviewBadge(featured);
+                  return b ? <span className={styles.samplePill}>{b.label}</span> : null;
+                })()}
               </figcaption>
             </figure>
           </div>

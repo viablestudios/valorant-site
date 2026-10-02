@@ -97,19 +97,26 @@ export interface Category {
   image: string;
 }
 
+/** Where a review came from. "sample" is fictional demo content; everything else is a real person's feedback entered through the admin. */
+export type ReviewSource = "sample" | "customer" | "verified-buyer" | "tester" | "community";
+export type ReviewStatus = "approved" | "hidden" | "pending";
+
 export interface Review {
   id: string;
   handle: string;
   productSlug: string;
   rating: 1 | 2 | 3 | 4 | 5;
+  /** Optional for reviews entered in the admin. */
   title: string;
   body: string;
   rankFrom?: string;
   rankTo?: string;
   date: string;
-  /** Sample content — replace with verified customer reviews before launch. */
+  /** Sample content: fictional demo reviews. These always show the "Sample" label. */
   placeholder: boolean;
   verified: boolean;
+  /** Real reviews entered in the admin carry their source (Customer, Verified buyer, Tester, Community feedback). */
+  source?: ReviewSource;
 }
 
 export interface CartLine {
