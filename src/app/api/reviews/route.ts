@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { createReview } from "@/lib/reviewStore";
 
 /**
  * Review submission endpoint.
@@ -38,8 +39,25 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "That review is too long." }, { status: 400 });
   }
 
-  // TODO before launch: write to a moderation queue in a real database instead of console.log.
   console.log("[review:pending]", { name, productSlug, rating, title, body: text, at: new Date().toISOString() });
+
+  // Queue it for the admin (/admin/reviews) as "pending". It is never shown to other visitors until the
+  // admin checks it, confirms it came from a real person and approves it.
+  try {
+    await createReview({
+      productSlug,
+      name,
+      rating: rating as 1 | 2 | 3 | 4 | 5,
+      title,
+      body: text,
+      date: new Date().toISOString().slice(0, 10),
+      source: "customer",
+      confirmedReal: false,
+      status: "pending",
+    });
+  } catch (err) {
+    console.error("[review:queue-failed]", err);
+  }
 
   return NextResponse.json({ ok: true });
 }

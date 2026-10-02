@@ -43,16 +43,16 @@ export async function getWallpapers(filter: { device?: WallpaperDevice; style?: 
   );
 }
 
+/**
+ * The fictional sample reviews. Genuine reviews entered in the admin are loaded on the server in app/page.tsx
+ * (they need the filesystem, which this file can't use because the cart imports it in the browser).
+ * Each review belongs to exactly one product (productSlug), so a product only ever shows its own reviews.
+ */
 export async function getReviews(productSlug?: string): Promise<Review[]> {
   return productSlug ? reviews.filter((r) => r.productSlug === productSlug) : reviews;
 }
 
-export function summarizeReviews(list: Review[]) {
-  const count = list.length;
-  const average = count ? list.reduce((s, r) => s + r.rating, 0) / count : 0;
-  const placeholder = list.some((r) => r.placeholder);
-  return { count, average: Math.round(average * 10) / 10, placeholder };
-}
+export { summarizeReviews } from "@/lib/reviewDisplay";
 
 /** Synchronous lookup for client components (cart, checkout). */
 export const productIndex: Record<string, Product> = Object.fromEntries(products.map((p) => [p.id, p]));
