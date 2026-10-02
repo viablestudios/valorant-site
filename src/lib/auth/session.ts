@@ -22,7 +22,7 @@ const demoOrders: Order[] = [
     createdAt: "2026-09-12",
     status: "fulfilled",
     email: demoCustomer.email,
-    lines: [{ productId: "prd_climb_bundle", name: "The Climb Bundle", quantity: 1, unitPrice: 4999 }],
+    lines: [{ productId: "prd_climb_bundle", name: "Path to Immortal: Guide", quantity: 1, unitPrice: 4999 }],
     subtotal: 4999,
     shipping: 0,
     total: 4999,

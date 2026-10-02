@@ -95,10 +95,10 @@ export function RankFinder() {
           </ul>
           <div className="rank-finder-next">
             <p>
-              Covered in <strong>{rank.guide}</strong>, part of the Climb Bundle.
+              Covered in <strong>{rank.guide}</strong>, part of Path to Immortal: Guide.
             </p>
             <button className="text-button" onClick={() => openProduct("the-climb-bundle")}>
-              See the Climb Bundle ↗
+              See Path to Immortal: Guide ↗
             </button>
           </div>
         </div>

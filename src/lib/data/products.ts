@@ -446,12 +446,12 @@ const bundles: Product[] = [
   {
     id: "prd_climb_bundle",
     slug: "the-climb-bundle",
-    name: "The Climb Bundle",
+    name: "Path to Immortal: Guide",
     tagline: "The three guides we'd give a friend who wants to rank up.",
     shortDescription:
       "The Immortal Roadmap, Aim Foundations and Game Sense Playbook together.",
     longDescription: [
-      "The Climb Bundle puts our core improvement system in one place: the Roadmap for structure, Aim Foundations for mechanics and the Game Sense Playbook for decisions.",
+      "Path to Immortal: Guide puts our core improvement system in one place: the Roadmap for structure, Aim Foundations for mechanics and the Game Sense Playbook for decisions.",
     ],
     type: "digital",
     category: "bundles",
@@ -460,7 +460,7 @@ const bundles: Product[] = [
       {
         kind: "cover",
         cover: {
-          title: "The Climb Bundle",
+          title: "Path to Immortal: Guide",
           kicker: "3 guides",
           edition: "Bundle",
           tone: "gold",
@@ -924,7 +924,7 @@ const pick = (slug: string) => archive.find((p) => p.slug === slug)!;
 export const products: Product[] = [
   {
     ...pick("the-climb-bundle"),
-    name: "Climb Bundle",
+    name: "Path to Immortal: Guide",
     price: 4999,
     compareAtPrice: 7999, // crossed-out "was" price
     badges: ["bestseller"],

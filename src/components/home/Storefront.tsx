@@ -24,7 +24,7 @@ const faqs: Faq[] = [
   { topic: "About Peakform", q: "What makes Peakform different from free Valorant advice online?", a: "There’s already an endless amount of Valorant content online. The problem is knowing what’s actually useful. Peakform is built around keeping things focused, practical and easy to apply rather than making you sit through 40 minutes of filler to find one useful tip." },
   { topic: "Buying", q: "Do you sell physical products as well as training content?", a: "Yes. Peakform isn’t only about improving your gameplay. The store also features gaming-inspired artwork and everyday gear, so you can upgrade the setup as well as the player sitting in front of it." },
   { topic: "Orders and refunds", q: "What if I need help with an order?", a: "If something isn’t right with your order or you’re unsure about a product, get in touch with us and we’ll help you sort it. No support ticket maze. No boss battle before you reach a human." },
-  { topic: "Orders and refunds", q: "Can I return an item?", a: "Physical products are covered by our returns policy. Digital products, including the Climb Bundle and wallpapers, are non-refundable once your download or access has started — you’ll confirm this at checkout. If a digital file is faulty or not as described, we’ll fix it, replace it or refund you." },
+  { topic: "Orders and refunds", q: "Can I return an item?", a: "Physical products are covered by our returns policy. Digital products, including Path to Immortal: Guide and wallpapers, are non-refundable once your download or access has started — you’ll confirm this at checkout. If a digital file is faulty or not as described, we’ll fix it, replace it or refund you." },
   { topic: "About Peakform", q: "Is Peakform affiliated with Riot Games or Valorant?", a: "No. Peakform is an independent gaming brand and is not affiliated with Riot Games. Valorant and related trademarks belong to Riot Games. We respect Riot Games and its community, and we aim to ensure our products and content follow their policies, terms and intellectual property guidelines." },
 ];
 export function Storefront({
@@ -111,7 +111,7 @@ export function Storefront({
         <div className="skills-footer">
           <p>Small improvements. Better habits. More rounds won.</p>
           <button className="text-button" onClick={() => openProduct("the-climb-bundle")}>
-            Explore the Climb Bundle · {formatPrice(4999)} ↗
+            Explore Path to Immortal: Guide · {formatPrice(4999)} ↗
           </button>
         </div>
       </section>
