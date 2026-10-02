@@ -1,10 +1,11 @@
 import { Storefront } from "@/components/home/Storefront";
-import { getAllProducts, getReviews } from "@/lib/catalog";
+import { getAllProducts } from "@/lib/catalog";
 import { gallery } from "@/lib/data/gallery";
+import { listPublicReviews } from "@/lib/reviewStore";
 import { ProductQuickView } from "@/components/product/ProductQuickView";
 export default async function HomePage() {
   const products = await getAllProducts();
-  const reviews = await getReviews();
+  const reviews = await listPublicReviews();
   return (
     <>
       <Storefront products={products} reviews={reviews} gallery={gallery} />

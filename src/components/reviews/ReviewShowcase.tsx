@@ -6,6 +6,7 @@ import { Sheet } from "@/components/ui/Sheet";
 import { FlickFeature } from "./FlickFeature";
 import { getLocalReviews, onLocalReviewsChange } from "@/lib/localReviews";
 import Image from "next/image";
+import { reviewBadge, reviewHandle, summarizeReviews } from "@/lib/reviewDisplay";
 
 /** Samples stay explicitly labelled until replaced by genuine customer feedback.
  *  Reviews a visitor submits from this browser (see ContactForm) are merged in
@@ -40,9 +41,11 @@ export function ReviewShowcase({
     (r) => filter === "all" || r.productSlug === filter,
   );
   const active = filtered[index % filtered.length];
-  const average = (
-    reviews.reduce((sum, r) => sum + r.rating, 0) / reviews.length
-  ).toFixed(1);
+  // The score and count follow the product being viewed, and use only that product's reviews
+  // (genuine ones once it has any; the visitor's own local preview review never counts).
+  const summary = summarizeReviews(filtered.filter((r) => !r.id.startsWith("local-")));
+  const average = summary.average.toFixed(1);
+  const anySample = filtered.some((r) => r.placeholder);
   const productName = (slug: string) =>
     products.find((p) => p.slug === slug)?.name;
   const changeFilter = (value: string) => {
@@ -53,11 +56,11 @@ export function ReviewShowcase({
   const tag = (r: Review) =>
     r.id.startsWith("local-") ? (
       <span className="sample-pill local-pill">Your review · pending check</span>
-    ) : r.placeholder ? (
-      <span className="sample-pill">Sample</span>
-    ) : r.verified ? (
-      <span className="sample-pill verified-pill">Verified buyer</span>
-    ) : null;
+    ) : (() => {
+        const b = reviewBadge(r);
+        if (!b) return null;
+        return <span className={b.sample ? "sample-pill" : "sample-pill verified-pill"}>{b.label}</span>;
+      })();
 
   return (
     <section
@@ -83,12 +86,9 @@ export function ReviewShowcase({
           <strong>{average}</strong>
           <div>
             <span aria-label={`${average} out of 5 average`}>★★★★★</span>
-            <p>{reviews.length} reviews</p>
+            <p>{summary.count} {summary.placeholder ? "sample " : ""}review{summary.count === 1 ? "" : "s"}</p>
           </div>
         </div>
-        <p className="sample-caption">
-          Fictional reviews for this store preview, plus anything you&apos;ve submitted from this browser.
-        </p>
         <button className="text-button" onClick={() => setOpen(true)}>
           Browse all reviews ↗
         </button>
@@ -127,14 +127,14 @@ export function ReviewShowcase({
             {"★".repeat(active.rating)}
             {"☆".repeat(5 - active.rating)}
           </p>
-          <h3>{active.title}</h3>
+          {active.title && <h3>{active.title}</h3>}
           <blockquote>“{active.body}”</blockquote>
           <div className="review-byline">
             <span className="review-avatar" aria-hidden="true">
               {active.handle.slice(0, 2).toUpperCase()}
             </span>
             <span>
-              @{active.handle}
+              {reviewHandle(active)}
               <small>{productName(active.productSlug)}</small>
             </span>
           </div>
@@ -169,7 +169,7 @@ export function ReviewShowcase({
         width={900}
         header={
           <h2>
-            Player perspectives <span className="sample-pill">Samples</span>
+            Player perspectives {anySample && <span className="sample-pill">Includes samples</span>}
           </h2>
         }
       >
@@ -201,8 +201,8 @@ export function ReviewShowcase({
                 {"★".repeat(r.rating)}
                 {"☆".repeat(5 - r.rating)}
               </p>
-              <h3>{r.title}</h3>
-              <p className="review-handle">@{r.handle}</p>
+              {r.title && <h3>{r.title}</h3>}
+              <p className="review-handle">{reviewHandle(r)}</p>
               <p>{r.body}</p>
             </article>
           ))}
